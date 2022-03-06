@@ -5,7 +5,8 @@ let allSqauresArry =[]
 let darkSqauresArry =[]
 let lightSqauresArry =[]
 let allPiecesArray =[]
-let useablePieceArray =[]
+let nullPieceArray =[]
+let PotentialyUseablePieceArray =[]
 
 for(let i =0 ; i <= 64-1 ; i ++){
     let makeSquare = document.createElement('div')
@@ -63,18 +64,21 @@ for(let i =0 ; i <= 7 ; i ++){
     for(let j =0 ; j <= 7 ; j ++){
         b = b+1
         if(j % 2 != 0 && i % 2 === 0){
-            useablePieceArray.push(b)
-            allPieces[b].classList.add(`useablePiece#${b}`)
-            allPieces[b].classList.add('useablePieces')
+            
+            PotentialyUseablePieceArray.push(b)
+            allPieces[b].classList.add(`PotentialyUseablePiece#${b}`)
+            allPieces[b].classList.add('PotentialyUseablePieces')
         }
         else if(j % 2 === 0 && i % 2 != 0 )
         {
-            useablePieceArray.push(b)
-            allPieces[b].classList.add(`useablePiece#${b}`)
-            allPieces[b].classList.add('useablePieces')
+            
+            PotentialyUseablePieceArray.push(b)
+            allPieces[b].classList.add(`PotentialyUseablePiece#${b}`)
+            allPieces[b].classList.add('PotentialyUseablePieces')
         }
         else{
-            useablePieceArray.push(b)
+            
+            nullPieceArray.push(b)
             allPieces[b].classList.add(`nullPiece#${b}`)
             allPieces[b].classList.add('nullPiece') 
         }
@@ -85,8 +89,10 @@ for(let i =0 ; i <= 7 ; i ++){
 
 //setting up starting positions
 //indentifying all activePieces
-let allUseablePieces = document.querySelectorAll(`.useablePieces`)
-allUseablePieces.forEach(UseablePiece=>{console.log(UseablePiece)})
+
+        //Print out all PotentialyUseablePieces
+// let allPotentialyUseablePieces = document.querySelectorAll(`.PotentialyUseablePieces`)
+// allPotentialyUseablePieces.forEach(PotentialyUseablePiece=>{console.log("list of all useable pieeces",PotentialyUseablePiece)})
 
 for(i =0; i <= allPieces.length-1 ; i ++){
     
@@ -111,5 +117,52 @@ allnullPieces.forEach(nullPiece=>{
 })
 
 //////////////////////////////////////////////////////////////////////////////////
+
+
+//activativng blue piece, this click should contain the test fucntions
+
+let BluePieces = document.querySelectorAll(".bluePiece")
+BluePieces.forEach(BluePiece=>{
+    BluePiece.addEventListener("click",BluePieceYouWantToMove)
+    console.log(BluePiece)
+})
+
+function BluePieceYouWantToMove(event){
+    activatedBluePiece = event.target.id
+    allPieces[activatedBluePiece].classList.add("activatedBluePiece")
+    console.log(`Activated Piece`,activatedBluePiece)
+    console.log(`Activated Piece`,allPieces[activatedBluePiece])
+    checkblueForwardRight()
+    checkblueForwardLeft()
+    
+}
+
+
+// blue piece wants to move foarwad and to the right this is the fucntion to test if it can
+let hiddenPieces = document.querySelectorAll(".hidden")
+function checkblueForwardRight(){
+    if(allPieces[activatedBluePiece-7].classList.contains('hidden'))
+    {
+        allPieces[activatedBluePiece-7].classList.add("PieceYouCanMoveTo")
+        console.log(`The piece to the Forwar Right is open`,allPieces[activatedBluePiece-7])
+    }
+    else{
+        console.log("The piece to the Forwar Right is NOT open")
+    }
+}
+// blue piece wants to move foarwad and to the right this is the fucntion to test if it can
+
+function checkblueForwardLeft(){
+    if(allPieces[activatedBluePiece-9].classList.contains('hidden'))
+    {
+        allPieces[activatedBluePiece-9].classList.add("PieceYouCanMoveTo")
+        console.log("The piece to the Forwar left is open",allPieces[activatedBluePiece-9])
+    }
+    else{
+        console.log("The piece to the Forwar left is NOT open")
+    }
+}
+
+
 
 

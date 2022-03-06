@@ -19,13 +19,16 @@
     margin: 0;
     background-color: aqua;
     font-size: 15px;
+    /* s */
     
   }
 .darkSQaures{
     background-color: brown;
+    /* visibility: hidden  */
 }
 .lightSQaures{
     background-color: burlywood;
+    /* visibility: hidden  */
 }
   .pieces{
     display: flex; 
@@ -40,7 +43,7 @@
 .nullPiece{
     background-color: white;
 }
-.useablePieces{
+.PotentialyUseablePieces{
     background-color: green;
 }
 
@@ -50,6 +53,10 @@
 .bluePiece{
     background-color: blue;
 }
+.activatedBluePiece{
+  border: solid black;
+}
+
 
   .hidden{
     display: flex; 
@@ -61,4 +68,8 @@
     margin: 5px;
     /* visibility: hidden */
     background-color: yellow;
+  }
+  .PieceYouCanMoveTo{
+    background-color: purple;
+    border: solid black;
   }
