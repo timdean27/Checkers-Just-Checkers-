@@ -53,7 +53,7 @@ for(let i =0 ; i <= 64-1 ; i ++){
         makePiece.classList.add('pieces')
         makePiece.setAttribute("id",`${i}`)
         makePiece.innerText= `${i}`
-        allPiecesArray.push(i)
+        
         allSquares[i].appendChild(makePiece)
 }
 let allPieces = document.querySelectorAll('.pieces')
@@ -64,20 +64,20 @@ for(let i =0 ; i <= 7 ; i ++){
     for(let j =0 ; j <= 7 ; j ++){
         b = b+1
         if(j % 2 != 0 && i % 2 === 0){
-            
+            allPiecesArray.push(b)
             PotentialyUseablePieceArray.push(b)
             //allPieces[b].classList.add(`PotentialyUseablePiece#${b}`)
             allPieces[b].classList.add('PotentialyUseablePieces')
         }
         else if(j % 2 === 0 && i % 2 != 0 )
         {
-            
+            allPiecesArray.push(b)
             PotentialyUseablePieceArray.push(b)
             //allPieces[b].classList.add(`PotentialyUseablePiece#${b}`)
             allPieces[b].classList.add('PotentialyUseablePieces')
         }
         else{
-            
+            allPiecesArray.push('nullPiece')
             nullPieceArray.push(b)
             //allPieces[b].classList.add(`nullPiece#${b}`)
             allPieces[b].classList.add('nullPiece') 
@@ -86,6 +86,7 @@ for(let i =0 ; i <= 7 ; i ++){
     }
 }
 
+console.log(allPiecesArray)
 
 //setting up starting positions
 //indentifying all activePieces
@@ -120,118 +121,45 @@ allnullPieces.forEach(nullPiece=>{
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-//Working on piece movement logic 
+//Add addEventListener depending on turn
+let bluePieces = document.querySelectorAll(".bluePiece")
+let redPieces = document.querySelectorAll(".redPiece")
+let turn = 0;
+console.log("turn check 1:",turn)
+ 
+function activatePieces(){
+    if(turn === 0){
+        bluePieces.forEach(bluePiece=>{
+        bluePiece.addEventListener("click", resestWithRemainingPeices)
+        console.log(bluePiece)
+        console.log("turn check 2:",turn)
+    })
+    }
 
+    else{
+        redPieces.forEach(redPiece=>{
+        redPiece.addEventListener("click", resestWithRemainingPeices)
+        console.log(redPiece)
+        console.log("turn check 3:",turn)
+        })
 
-
-//first click
-//activativng blue piece, this click should contain the test fucntions
-// returning true for all availiable movements 
-let BluePieces = document.querySelectorAll(".bluePiece")
-BluePieces.forEach(BluePiece=>{
-    BluePiece.addEventListener("click",BluePieceYouWantToMove)
-    console.log(BluePiece)
-})
-
-function BluePieceYouWantToMove(event){
-    activatedBluePiece = event.target.id
-    allPieces[activatedBluePiece].classList.add("activatedBluePiece")
-    console.log(`Activated Piece ID`,activatedBluePiece)
-    console.log(`Activated Piece`,allPieces[activatedBluePiece])
-    checkblueForwardRight()
-    checkblueForwardLeft()
-    console.log(checkblueForwardRight())
-    console.log(checkblueForwardLeft())
-
-    //second click
-    //We are clicking the piece we want to move to we should only be able to click the purple peices with class PieceYouCanMoveTo
-            let piecesYouCanMoveTo = document.querySelectorAll(".PieceYouCanMoveTo")
-            piecesYouCanMoveTo.forEach(pieceYouCanMoveTo=>{
-                pieceYouCanMoveTo.addEventListener("click",PieceWeWantToMoveToFunc)
-                console.log("This is a piece you can move to ",pieceYouCanMoveTo)
-            })
-
-            function PieceWeWantToMoveToFunc(event){
-                let selcetedPiecetomoveto = event.target.id
-                console.log(`The piece to the Forwar Right is open`,rightForwardOpenPiece)
-                console.log("You want to move to this piece",selcetedPiecetomoveto)
-
-                    //moveing to forward right piece
-                    if(selcetedPiecetomoveto == rightForwardOpenPiece && checkblueForwardRight() ==true){
-                                            //add back hidden to activatedBluePiece and remove class "activatedBluePiece"
-                                            allPieces[activatedBluePiece].classList.add('hidden')
-                                            allPieces[activatedBluePiece].classList.remove("activatedBluePiece")
-                                            allPieces[activatedBluePiece].classList.remove("bluePiece")
-                                            //add back hidden to unselected piece and removing  ".PieceYouCanMoveTo"
-                                            allPieces[leftForwardOpenPiece].classList.remove("PieceYouCanMoveTo")
-                                            //add class "bluePiece" to the new piece we are moving to and remove hidden and ".PieceYouCanMoveTo"
-                                            allPieces[rightForwardOpenPiece].classList.remove("hidden")
-                                            allPieces[rightForwardOpenPiece].classList.remove("PieceYouCanMoveTo")
-                                            allPieces[rightForwardOpenPiece].classList.add("bluePiece")
-
-                                        }
-                //moveing to forward left piece
-                        else if(selcetedPiecetomoveto == leftForwardOpenPiece  && checkblueForwardLeft() == true){
-                            //add back hidden to activatedBluePiece and remove class "activatedBluePiece"
-                                    allPieces[activatedBluePiece].classList.add('hidden')
-                                    allPieces[activatedBluePiece].classList.remove("activatedBluePiece")
-                                    allPieces[activatedBluePiece].classList.remove("bluePiece")
-                                    //add back hidden to unselected piece and removing  ".PieceYouCanMoveTo"
-                                    allPieces[rightForwardOpenPiece].classList.remove("PieceYouCanMoveTo")
-                                    //add class "bluePiece" to the new piece we are moving to and remove hidden and ".PieceYouCanMoveTo"
-                                    allPieces[leftForwardOpenPiece].classList.remove("hidden")
-                                    allPieces[leftForwardOpenPiece].classList.remove("PieceYouCanMoveTo")
-                                    allPieces[leftForwardOpenPiece].classList.add("bluePiece")
-
-                        }
-                        else{
-                            console.log("Cant move to that spot");
-                        }
-
-                        activatedBluePiece = ""
-
-                        console.log(`Activated Piece ID`,activatedBluePiece)
-                        console.log(`Activated Piece`,allPieces[activatedBluePiece])
-            }
-
-    
+    }
 }
 
+////////////////////
+// change the players turn function
+//this will be called at the end of a move and activatePieces for the next player
 
-
-// blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
-//the piece dirrectly to the right will always be -7 away from the slected when bblue is moveing forward 
-let rightForwardOpenPiece
-function checkblueForwardRight(){
-    if(allPieces[activatedBluePiece-7].classList.contains('hidden'))
-    {
-        allPieces[activatedBluePiece-7].classList.add("PieceYouCanMoveTo")
-        rightForwardOpenPiece = allPieces[activatedBluePiece-7].id
-        //console.log(`The piece to the Forwar Right is open`,allPieces[activatedBluePiece-7])
-        return true
+function changeWhosTurn(){
+    if(turn == 0){
+        turn = 1;
     }
     else{
-        console.log("The piece to the Forwar Right is NOT open")
-        return false
+        turn = 0;
     }
+    activatePieces()
 }
 
-// blue piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
-//the piece dirrectly to the left will always be -7 away from the slected when bblue is moveing forward 
-let leftForwardOpenPiece
-function checkblueForwardLeft(){
-    if(allPieces[activatedBluePiece-9].classList.contains('hidden'))
-    {
-        allPieces[activatedBluePiece-9].classList.add("PieceYouCanMoveTo")
-        leftForwardOpenPiece = allPieces[activatedBluePiece-9].id
-        //console.log("The piece to the Forwar left is open",allPieces[activatedBluePiece-9])
-        return true
-    }
-    else{
-        console.log("The piece to the Forwar left is NOT open")
-        return false
-    }
-}
-
+activatePieces()
 
 
