@@ -127,11 +127,12 @@ let redPieces = document.querySelectorAll(".redPiece")
 let turn = 0;
 console.log("turn check 1:",turn)
  
-function activatePieces(){
+function addClickeventToPieces(){
     if(turn === 0){
         bluePieces.forEach(bluePiece=>{
         bluePiece.addEventListener("click", resestWithRemainingPeices)
         console.log(bluePiece)
+        console.log("Event Listener was added for Blue:")
         console.log("turn check 2:",turn)
     })
     }
@@ -140,6 +141,7 @@ function activatePieces(){
         redPieces.forEach(redPiece=>{
         redPiece.addEventListener("click", resestWithRemainingPeices)
         console.log(redPiece)
+        console.log("Event Listener was added for Red:")
         console.log("turn check 3:",turn)
         })
 
@@ -162,11 +164,49 @@ function changeWhosTurn(){
     else{
         turn = 0;
     }
-    activatePieces()
+    addClickeventToPieces()
+}
+addClickeventToPieces()
+
+
+
+// porbelm in prior code was when a piece was removed it remaind inside the forEach add event listener even when bluepice class was removed
+// function to remove event listener
+// let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
+// TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
+
+// function TestRemoveEventButtonTestFunc(){removeEventListener()}
+
+function removeEventListenerWhenNotTurn(){
+    if(turn === 0){
+        bluePieces.forEach(bluePiece=>{
+        bluePiece.removeEventListener("click", resestWithRemainingPeices)
+        console.log(bluePiece)
+        console.log("Event Listener was removed for Blue",turn)
+    })
+    }
+    else{
+        redPieces.forEach(redPiece=>{
+        redPiece.removeEventListener("click", resestWithRemainingPeices)
+        console.log(redPiece)
+        console.log("Event Listener was removed for Red:",turn)
+        })
+
+    }
+
 }
 
-activatePieces()
+function resestWithRemainingPeices(){
+    pieceYouWantToMove(event)
+}
 
 
-function resestWithRemainingPeices(){}
-
+//identify selceted piece and give class active 
+function pieceYouWantToMove(event){
+    activatedPiece = event.target.id
+    allPieces[activatedPiece].classList.add("activatedPiece")
+    console.log(`Activated Piece ID`,activatedPiece)
+    console.log(`Activated Piece`,allPieces[activatedPiece])
+    removeEventListenerWhenNotTurn()
+    changeWhosTurn()
+}

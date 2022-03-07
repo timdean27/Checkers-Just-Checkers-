@@ -4,7 +4,7 @@
     border: 3px solid black;
 }
 .StartGame{
-  
+
 }
 #SideColumn{
     letter-spacing: 20px;
@@ -56,7 +56,7 @@
 .bluePiece{
     background-color: blue;
 }
-.activatedBluePiece{
+.activatedPiece{
   border: solid black;
 }
 
