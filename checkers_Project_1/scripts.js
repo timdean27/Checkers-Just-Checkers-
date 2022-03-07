@@ -149,7 +149,12 @@ function activatePieces(){
 ////////////////////
 // change the players turn function
 //this will be called at the end of a move and activatePieces for the next player
+let changeTurnButtonTest = document.querySelector(".ChangeTurn")
+changeTurnButtonTest.addEventListener("click", changeTurnButtonTestFunc)
 
+function changeTurnButtonTestFunc(){
+    changeWhosTurn()
+}
 function changeWhosTurn(){
     if(turn == 0){
         turn = 1;
@@ -162,4 +167,6 @@ function changeWhosTurn(){
 
 activatePieces()
 
+
+function resestWithRemainingPeices(){}
 
