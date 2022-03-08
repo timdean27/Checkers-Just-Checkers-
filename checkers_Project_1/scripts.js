@@ -217,7 +217,7 @@ function pieceYouWantToMove(event){
     //console.log(console.log(`Activated Piece ID+9`,parseInt(activatedPiece)+9))
     console.log(console.log(`Activated Piece ID-7`,activatedPiece-7))
     removeEventListenerWhenNotTurn()
-    changeWhosTurn()
+    //changeWhosTurn() // this should be added once piece is selected to move to 
     checkForOpenSpotsNoJumps()
 }
 
@@ -226,16 +226,21 @@ function pieceYouWantToMove(event){
 //for blue forward right is id-7 // red forward right is id +9
 //for blue forward left  id-9 // red forward right is id +7
 // piece ID we want to move is activatedPiece with activatedPiece class
-
-
+let rightForwardOpenPieceUP
+let leftForwardOpenPieceUp
+let rightForwardOpenPieceDown
+let leftForwardOpenPieceDown
+let clickWhereWeWantToMove
+let spotWeWantToMoveTO
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the right will always be -7 away from the slected when blue is moveing forward 
 function checkForOpenSpotsNoJumps(){
     if(allPieces[activatedPiece-7].classList.contains('hidden'))
     {
         allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
-        let rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
+        rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
         console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+        console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
         //return true
     }
 // blue piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
@@ -243,8 +248,9 @@ function checkForOpenSpotsNoJumps(){
     if(allPieces[activatedPiece-9].classList.contains('hidden'))
     {
         allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
-        let leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
+        leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
         console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+        console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
         //return true
     }
 // red piece wants to move foarwad and to the right this is the function to test if the piece is currently hidden
@@ -252,8 +258,9 @@ function checkForOpenSpotsNoJumps(){
     if(allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
     {
         allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
-        let rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
+        rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
         console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+        console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
         //return true
     }
 // red piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
@@ -261,8 +268,64 @@ function checkForOpenSpotsNoJumps(){
     if(allPieces[parseInt(activatedPiece)+9].classList.contains('hidden'))
     {
         allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
-        let leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+        leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
         console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+        console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
         //return true
     }
+
+    clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
+        clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
+            clickWeWantToMove.addEventListener("click", movePiece)
+        })
 }
+
+
+//function to clear and reset classes after a piece is moved
+function resestAfterPieceIsMoved(){
+    if(turn == 0 ){
+        allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
+        allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+        }
+    else if(turn == 1 ){
+        allPieces[spotWeWantToMoveTO].classList.add("redPiece")
+        allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+        }
+    clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
+        whereWeWantToMove.removeEventListener("click", movePiece)
+        whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
+    })
+    allPieces[activatedPiece].classList.remove("activatedPiece")
+    allPieces[activatedPiece].classList.add("hidden")
+    changeWhosTurn()  
+}
+
+
+//Write function to move to identified pieces // no jumps yet
+function movePiece(event){
+    
+    spotWeWantToMoveTO = event.target.id
+    console.log(`The spot you want to move to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == leftForwardOpenPieceUp  && allPieces[leftForwardOpenPieceUp].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${leftForwardOpenPieceUp }`, allPieces[leftForwardOpenPieceUp])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == rightForwardOpenPieceDown && allPieces[rightForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${rightForwardOpenPieceDown}`, allPieces[rightForwardOpenPieceDown])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == leftForwardOpenPieceDown && allPieces[leftForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${leftForwardOpenPieceDown}`, allPieces[leftForwardOpenPieceDown])
+        resestAfterPieceIsMoved()
+    }
+    
+}
+
