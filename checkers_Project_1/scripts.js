@@ -18,28 +18,31 @@ for(let i =0 ; i <= 64-1 ; i ++){
 }
 let allSquares = document.querySelectorAll('.square')
 
-let a = -1
+let a = 0
 for(let i =0 ; i <= 7 ; i ++){
     
     for(let j =0 ; j <= 7 ; j ++){
-        a = a+1
+        
         if(j % 2 != 0 && i % 2 === 0){
             darkSqauresArry.push(a)
             allSquares[a].classList.add(`darkSQaure#${a}`)
             allSquares[a].classList.add('darkSQaures')
+            //console.log(a)
         }
         else if(j % 2 === 0 && i % 2 != 0 )
         {
             darkSqauresArry.push(a)
             allSquares[a].classList.add(`darkSQaure#${a}`)
             allSquares[a].classList.add('darkSQaures')
+            //console.log(a)
         }
         else{
             lightSqauresArry.push(a)
             allSquares[a].classList.add(`lightSQaure#${a}`)
-            allSquares[a].classList.add('lightSQaures') 
+            allSquares[a].classList.add('lightSQaures')
+            //console.log(a)
         }
-        
+        a++
     }
 }
 
@@ -131,20 +134,23 @@ function addClickeventToPieces(){
     if(turn === 0){
         bluePieces.forEach(bluePiece=>{
         bluePiece.addEventListener("click", resestWithRemainingPeices)
-        console.log(bluePiece)
-        console.log("Event Listener was added for Blue:")
-        console.log("turn check 2:",turn)
+        //console.log(bluePiece)
+        
+        
     })
+    console.log("Event Listener was added for Blue:")
+    console.log("turn check 2:",turn)
     }
 
     else{
         redPieces.forEach(redPiece=>{
         redPiece.addEventListener("click", resestWithRemainingPeices)
-        console.log(redPiece)
+        //console.log(redPiece)
+        
+        
+        })
         console.log("Event Listener was added for Red:")
         console.log("turn check 3:",turn)
-        })
-
     }
 }
 
@@ -179,19 +185,20 @@ addClickeventToPieces()
 
 function removeEventListenerWhenNotTurn(){
     if(turn === 0){
-        bluePieces.forEach(bluePiece=>{
-        bluePiece.removeEventListener("click", resestWithRemainingPeices)
-        console.log(bluePiece)
-        console.log("Event Listener was removed for Blue",turn)
-    })
+            bluePieces.forEach(bluePiece=>{
+            bluePiece.removeEventListener("click", resestWithRemainingPeices)
+            console.log(bluePiece)
+            
+        })
+        console.log("Event Listener was removed for Blue")
     }
     else{
-        redPieces.forEach(redPiece=>{
-        redPiece.removeEventListener("click", resestWithRemainingPeices)
-        console.log(redPiece)
-        console.log("Event Listener was removed for Red:",turn)
-        })
-
+            redPieces.forEach(redPiece=>{
+            redPiece.removeEventListener("click", resestWithRemainingPeices)
+            console.log(redPiece)
+            
+            })
+        console.log("Event Listener was removed for Red:",)
     }
 
 }
@@ -207,6 +214,55 @@ function pieceYouWantToMove(event){
     allPieces[activatedPiece].classList.add("activatedPiece")
     console.log(`Activated Piece ID`,activatedPiece)
     console.log(`Activated Piece`,allPieces[activatedPiece])
+    //console.log(console.log(`Activated Piece ID+9`,parseInt(activatedPiece)+9))
+    console.log(console.log(`Activated Piece ID-7`,activatedPiece-7))
     removeEventListenerWhenNotTurn()
     changeWhosTurn()
+    checkForOpenSpotsNoJumps()
+}
+
+//lets try this again...
+//check avaliable spaces...no jumps..left front right front
+//for blue forward right is id-7 // red forward right is id +9
+//for blue forward left  id-9 // red forward right is id +7
+// piece ID we want to move is activatedPiece with activatedPiece class
+
+
+// blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
+//the piece dirrectly to the right will always be -7 away from the slected when blue is moveing forward 
+function checkForOpenSpotsNoJumps(){
+    if(allPieces[activatedPiece-7].classList.contains('hidden'))
+    {
+        allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
+        let rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
+        console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+        //return true
+    }
+// blue piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
+//the piece dirrectly to the left will always be -7 away from the slected when bblue is moveing forward 
+    if(allPieces[activatedPiece-9].classList.contains('hidden'))
+    {
+        allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
+        let leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
+        console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+        //return true
+    }
+// red piece wants to move foarwad and to the right this is the function to test if the piece is currently hidden
+//the piece dirrectly to the right will always be +7 away from the slected when bblue is moveing forward 
+    if(allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
+    {
+        allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
+        let rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
+        console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+        //return true
+    }
+// red piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
+//the piece dirrectly to the left will always be +9 away from the slected when bblue is moveing forward 
+    if(allPieces[parseInt(activatedPiece)+9].classList.contains('hidden'))
+    {
+        allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
+        let leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+        console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+        //return true
+    }
 }
