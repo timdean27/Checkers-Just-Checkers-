@@ -257,7 +257,7 @@ let spotWeWantToMoveTO
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the right will always be -7 away from the slected when blue is moveing forward 
 function checkForOpenSpotsNoJumps(){
-    if(turn === 0){
+    if(turn === 0 ){
         if(allPieces[activatedPiece-7].classList.contains('hidden'))
             {
                 allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
@@ -279,7 +279,7 @@ function checkForOpenSpotsNoJumps(){
     }
 // red piece wants to move foarwad and to the right this is the function to test if the piece is currently hidden
 //the piece dirrectly to the right will always be +7 away from the slected when bblue is moveing forward
-    if(turn === 1){
+    if(turn === 1 ){
         if(allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
             {
                 allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
@@ -338,7 +338,7 @@ function resestAfterPieceIsMoved(){
     rightForwardDownJump =0
     leftForwardDownJump=0
 
-    changeWhosTurn()   
+    winGameFunc()
 }
 
 
@@ -375,7 +375,8 @@ function movePiece(event){
 // jump forward left up will be (id - 18) forward right up (id - 14)
 // jump forward left up will be (id + 18) forward right up (id + 14)
 function checkForJumps(){
-    if(turn === 0){
+    console.log(allPieces[activatedPiece-18])
+    if(turn === 0  && activatedPiece > 15){
         if(allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[activatedPiece-7].classList.contains('redPiece') && parseInt(activatedPiece) > 15)
             {
                 allPieces[activatedPiece-14].classList.add("PieceYouCanMoveTo")
@@ -395,7 +396,7 @@ function checkForJumps(){
             }
     }
 // red piece wants to Jump forward and to the right this is the function to test if the piece is currently hidden
-    if(turn === 1){
+    if(turn === 1 && activatedPiece < 48){
         if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece')  && parseInt(activatedPiece) < 48)
             {
                 allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
@@ -453,6 +454,7 @@ function singleJumpMovePiece(){
         console.log("pieceWeSingleJump",pieceWeSingleJump)
         resestAfterPieceIsJumpedSingle()
     }
+    
 }
 
 //reset after piece is jumped
@@ -480,7 +482,8 @@ function resestAfterPieceIsJumpedSingle(){
     })
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
-    changeWhosTurn()  
+    
+    winGameFunc()
 }
 
 // keep count of pieces removed and remaining / should just be redPiece and bluePiece .length at each turn change
@@ -488,7 +491,17 @@ function resestAfterPieceIsJumpedSingle(){
 function pieceCount(){
     document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length}`
     document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length}`
-    
 }
 
 //Need win condition for when all pieces of a color are removed
+//Need to add logic for when player has no moves leftbut pieces.length > 0 
+function winGameFunc(){
+    pieceCount()
+    if (bluePieces.length == 0){
+        console.log("Red Wins")
+    } 
+    if (redPieces.length == 0){
+        console.log("Blue Wins")
+    }
+    changeWhosTurn()
+}
