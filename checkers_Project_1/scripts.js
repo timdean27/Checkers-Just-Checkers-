@@ -243,6 +243,10 @@ let rightForwardOpenPieceUP
 let leftForwardOpenPieceUp
 let rightForwardOpenPieceDown
 let leftForwardOpenPieceDown
+let rightForwardUPJump
+let leftForwardUPJump
+let rightForwardDownJump
+let leftForwardDownJump
 let clickWhereWeWantToMove
 let spotWeWantToMoveTO
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
@@ -347,7 +351,7 @@ function movePiece(event){
         console.log(`You Want to move to spot${leftForwardOpenPieceDown}`, allPieces[leftForwardOpenPieceDown])
         resestAfterPieceIsMoved()
     }
-    
+    singleJumpMovePiece()
 }
 
 //Function to check for avaliable jump spaces
@@ -355,10 +359,8 @@ function movePiece(event){
 // jump forward left up will be (id - 18) forward right up (id - 14)
 // jump forward left up will be (id + 18) forward right up (id + 14)
 function checkForJumps(){
-
-    
     if(turn === 0){
-        if(allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[activatedPiece-7].classList.contains('redPiece'))
+        if(allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[activatedPiece-7].classList.contains('redPiece') && activatedPiece > 15)
             {
                 allPieces[activatedPiece-14].classList.add("PieceYouCanMoveTo")
                 rightForwardUPJump = allPieces[activatedPiece-14].id
@@ -367,7 +369,7 @@ function checkForJumps(){
                 //return true
             }
 // blue piece wants to Jump forward and to the left this is the fucntion to test if the piece is currently hidden
-        if(allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece'))
+        if(allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') && activatedPiece > 15)
             {
                 allPieces[activatedPiece-18].classList.add("PieceYouCanMoveTo")
                 leftForwardUPJump = allPieces[activatedPiece-18].id
@@ -378,7 +380,7 @@ function checkForJumps(){
     }
 // red piece wants to Jump forward and to the right this is the function to test if the piece is currently hidden
     if(turn === 1){
-        if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece'))
+        if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece')  && parseInt(activatedPiece) < 48)
             {
                 allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
                 rightForwardDownJump = allPieces[parseInt(activatedPiece)+14].id
@@ -387,7 +389,7 @@ function checkForJumps(){
                 //return true
             }
 // red piece wants to Jump foarwad and to the left this is the fucntion to test if the piece is currently hidden
-        if(allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece'))
+        if(allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece') && parseInt(activatedPiece) < 48 )
             {
                 allPieces[parseInt(activatedPiece)+18].classList.add("PieceYouCanMoveTo")
                 leftForwardDownJump = allPieces[parseInt(activatedPiece)+18].id
@@ -403,3 +405,28 @@ function checkForJumps(){
 }
 
 // now we need a function to change atrribuites of when piece is jumped
+//going to try to pass fucntion to bottom of movePiece function instead of adding in additonal iff conditions
+
+function singleJumpMovePiece(){
+    console.log(`The spot you want to Jump to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == rightForwardUPJump && allPieces[rightForwardUPJump].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${rightForwardUPJump}`, allPieces[rightForwardUPJump])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == leftForwardUPJump  && allPieces[leftForwardUPJump].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${leftForwardUPJump}`, allPieces[leftForwardUPJump])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == rightForwardDownJump  && allPieces[rightForwardDownJump].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${rightForwardDownJump}`, allPieces[rightForwardDownJump])
+        resestAfterPieceIsMoved()
+    }
+    //move to rightForwardOpenPieceUP
+    if(spotWeWantToMoveTO == leftForwardDownJump && allPieces[leftForwardDownJump].classList.contains("PieceYouCanMoveTo")){
+        console.log(`You Want to move to spot${leftForwardDownJump}`, allPieces[leftForwardDownJump])
+        resestAfterPieceIsMoved()
+    }
+}
