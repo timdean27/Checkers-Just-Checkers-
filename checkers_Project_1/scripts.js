@@ -332,7 +332,7 @@ function resestAfterPieceIsMoved(){
     rightForwardUPJump =0
     leftForwardUPJump =0
     rightForwardDownJump =0
-    leftForwardDownJump =0
+    leftForwardDownJump=0
     changeWhosTurn()   
 }
 
@@ -371,7 +371,7 @@ function movePiece(event){
 // jump forward left up will be (id + 18) forward right up (id + 14)
 function checkForJumps(){
     if(turn === 0){
-        if(allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[activatedPiece-7].classList.contains('redPiece') && activatedPiece > 15)
+        if(allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[activatedPiece-7].classList.contains('redPiece') && parseInt(activatedPiece) > 15)
             {
                 allPieces[activatedPiece-14].classList.add("PieceYouCanMoveTo")
                 rightForwardUPJump = allPieces[activatedPiece-14].id
@@ -380,7 +380,7 @@ function checkForJumps(){
                 //return true
             }
 // blue piece wants to Jump forward and to the left this is the fucntion to test if the piece is currently hidden
-        if(allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') && activatedPiece > 15)
+        if(allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') && parseInt(activatedPiece)> 15)
             {
                 allPieces[activatedPiece-18].classList.add("PieceYouCanMoveTo")
                 leftForwardUPJump = allPieces[activatedPiece-18].id
