@@ -169,12 +169,16 @@ turnTrackerHTML.innerText = "Turn Tracker: We Always Start at Blue for now"
 //     changeWhosTurn()
 // }
 function changeWhosTurn(){
+    pieceCount()
     if(turn == 0){
         turnTrackerHTML.innerText = "Turn Tracker: Red"
+        turnTrackerHTML.style.color="red"
+        
         turn = 1;
     }
     else{
         turnTrackerHTML.innerText = "Turn Tracker: Blue"
+        turnTrackerHTML.style.color = "blue"
         turn = 0;
     }
     addClickeventToPieces()
@@ -333,6 +337,7 @@ function resestAfterPieceIsMoved(){
     leftForwardUPJump =0
     rightForwardDownJump =0
     leftForwardDownJump=0
+
     changeWhosTurn()   
 }
 
@@ -477,3 +482,13 @@ function resestAfterPieceIsJumpedSingle(){
     allPieces[activatedPiece].classList.add("hidden")
     changeWhosTurn()  
 }
+
+// keep count of pieces removed and remaining / should just be redPiece and bluePiece .length at each turn change
+
+function pieceCount(){
+    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length}`
+    document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length}`
+    
+}
+
+//Need win condition for when all pieces of a color are removed
