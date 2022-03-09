@@ -247,6 +247,7 @@ let rightForwardUPJump
 let leftForwardUPJump
 let rightForwardDownJump
 let leftForwardDownJump
+let pieceWeSingleJump
 let clickWhereWeWantToMove
 let spotWeWantToMoveTO
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
@@ -305,11 +306,13 @@ function checkForOpenSpotsNoJumps(){
 
 
 //function to clear and reset classes after a piece is moved
+// this is only for single movements forward going to make seprate function for jumps
 function resestAfterPieceIsMoved(){
     if(turn == 0 ){
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
         allPieces[activatedPiece].classList.remove("bluePiece")
+       
         }
     else if(turn == 1 ){
         allPieces[spotWeWantToMoveTO].classList.add("redPiece")
@@ -322,7 +325,15 @@ function resestAfterPieceIsMoved(){
     })
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
-    changeWhosTurn()  
+    rightForwardOpenPieceUP =0
+    leftForwardOpenPieceUp =0
+    rightForwardOpenPieceDown =0
+    leftForwardOpenPieceDown =0
+    rightForwardUPJump =0
+    leftForwardUPJump =0
+    rightForwardDownJump =0
+    leftForwardDownJump =0
+    changeWhosTurn()   
 }
 
 
@@ -412,21 +423,57 @@ function singleJumpMovePiece(){
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardUPJump && allPieces[rightForwardUPJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardUPJump}`, allPieces[rightForwardUPJump])
-        resestAfterPieceIsMoved()
+        pieceWeSingleJump = allPieces[activatedPiece-7].id
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardUPJump  && allPieces[leftForwardUPJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardUPJump}`, allPieces[leftForwardUPJump])
-        resestAfterPieceIsMoved()
+        pieceWeSingleJump = allPieces[activatedPiece-9].id
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardDownJump  && allPieces[rightForwardDownJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardDownJump}`, allPieces[rightForwardDownJump])
-        resestAfterPieceIsMoved()
+        pieceWeSingleJump = allPieces[parseInt(activatedPiece)+7].id
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardDownJump && allPieces[leftForwardDownJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardDownJump}`, allPieces[leftForwardDownJump])
-        resestAfterPieceIsMoved()
+        pieceWeSingleJump = allPieces[parseInt(activatedPiece)+9].id
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        resestAfterPieceIsJumpedSingle()
     }
+}
+
+//reset after piece is jumped
+// we need to find what piece is being jumped first...
+function resestAfterPieceIsJumpedSingle(){
+    if(turn == 0 ){
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
+        allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+        allPieces[pieceWeSingleJump].classList.remove("redPiece")
+        allPieces[pieceWeSingleJump].classList.add("hidden")
+        allPieces[activatedPiece].classList.remove("bluePiece")
+        }
+    else if(turn == 1 ){
+        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        allPieces[spotWeWantToMoveTO].classList.add("redPiece")
+        allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+        allPieces[pieceWeSingleJump].classList.remove("bluePiece")
+        allPieces[pieceWeSingleJump].classList.add("hidden")
+        allPieces[activatedPiece].classList.remove("redPiece")
+        }
+    clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
+        whereWeWantToMove.removeEventListener("click", movePiece)
+        whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
+    })
+    allPieces[activatedPiece].classList.remove("activatedPiece")
+    allPieces[activatedPiece].classList.add("hidden")
+    changeWhosTurn()  
 }

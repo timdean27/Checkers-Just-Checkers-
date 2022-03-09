@@ -8,9 +8,9 @@
 }
 #SideColumn{
     letter-spacing: 20px;
-    /* flex-direction: column; */
-    display: flex;
-    flex-direction: column-reverse;
+    display: block;
+    flex-direction: column;
+
 }
 #TopRow{
   letter-spacing: 21.5px;
