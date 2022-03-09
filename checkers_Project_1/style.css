@@ -3,8 +3,8 @@
     width: 400px;
     border: 3px solid black;
 }
-.StartGame{
-
+#TurnTracker{
+  font-size: 20px;
 }
 #SideColumn{
     letter-spacing: 20px;
@@ -22,7 +22,7 @@
     margin: 0;
     background-color: aqua;
     font-size: 15px;
-    /* s */
+    
     
   }
 .darkSQaures{
@@ -45,6 +45,7 @@
   }
 .nullPiece{
     background-color: white;
+    opacity: 100%;
 }
 .PotentialyUseablePieces{
     background-color: green;
@@ -71,6 +72,7 @@
     margin: 5px;
     /* visibility: hidden */
     background-color: yellow;
+    opacity: 100%;
   }
   .PieceYouCanMoveTo{
     background-color: purple;
