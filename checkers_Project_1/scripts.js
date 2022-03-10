@@ -8,6 +8,9 @@ let allPiecesArray =[]
 let nullPieceArray =[]
 let PotentialyUseablePieceArray =[]
 
+//making sqaures on board
+
+
 for(let i =0 ; i <= 64-1 ; i ++){
     let makeSquare = document.createElement('div')
         makeSquare.classList.add('square')
@@ -169,7 +172,8 @@ turnTrackerHTML.innerText = "Turn Tracker: We Always Start at Blue for now"
 //     changeWhosTurn()
 // }
 function changeWhosTurn(){
-    pieceCount()
+   
+    
     if(turn == 0){
         turnTrackerHTML.innerText = "Turn Tracker: Red"
         turnTrackerHTML.style.color="red"
@@ -201,7 +205,7 @@ function removeEventListenerWhenNotTurn(){
     if(turn === 0){
             bluePieces.forEach(bluePiece=>{
             bluePiece.removeEventListener("click", resestWithRemainingPeices)
-            console.log(bluePiece)
+            //console.log(bluePiece)
             
         })
         console.log("Event Listener was removed for Blue")
@@ -209,7 +213,7 @@ function removeEventListenerWhenNotTurn(){
     else{
             redPieces.forEach(redPiece=>{
             redPiece.removeEventListener("click", resestWithRemainingPeices)
-            console.log(redPiece)
+            //console.log(redPiece)
             
             })
         console.log("Event Listener was removed for Red:",)
@@ -221,6 +225,7 @@ function resestWithRemainingPeices(){
     pieceYouWantToMove(event)
     bluePieces = document.querySelectorAll(".bluePiece")
     redPieces = document.querySelectorAll(".redPiece")
+    pieceCount()
 }
 
 
@@ -251,7 +256,7 @@ let rightForwardUPJump
 let leftForwardUPJump
 let rightForwardDownJump
 let leftForwardDownJump
-let pieceWeSingleJump
+let pieceWeSingleJumped
 let clickWhereWeWantToMove
 let spotWeWantToMoveTO
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
@@ -268,7 +273,7 @@ function checkForOpenSpotsNoJumps(){
             }
 // blue piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the left will always be -7 away from the slected when bblue is moveing forward 
-        if(allPieces[activatedPiece-9].classList.contains('hidden'))
+        if(parseInt(activatedPiece) != 8 && allPieces[activatedPiece-9].classList.contains('hidden') )
             {
                 allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
@@ -290,7 +295,7 @@ function checkForOpenSpotsNoJumps(){
             }
 // red piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the left will always be +9 away from the slected when bblue is moveing forward 
-        if(allPieces[parseInt(activatedPiece)+9].classList.contains('hidden'))
+        if(parseInt(activatedPiece) != 55 && allPieces[parseInt(activatedPiece)+9].classList.contains('hidden') )
             {
                 allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
@@ -337,7 +342,7 @@ function resestAfterPieceIsMoved(){
     leftForwardUPJump =0
     rightForwardDownJump =0
     leftForwardDownJump=0
-
+    spotWeWantToMoveTO =0
     winGameFunc()
 }
 
@@ -429,59 +434,69 @@ function singleJumpMovePiece(){
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardUPJump && allPieces[rightForwardUPJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardUPJump}`, allPieces[rightForwardUPJump])
-        pieceWeSingleJump = allPieces[activatedPiece-7].id
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        pieceWeSingleJumped = allPieces[activatedPiece-7].id
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardUPJump  && allPieces[leftForwardUPJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardUPJump}`, allPieces[leftForwardUPJump])
-        pieceWeSingleJump = allPieces[activatedPiece-9].id
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        pieceWeSingleJumped = allPieces[activatedPiece-9].id
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+        
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardDownJump  && allPieces[rightForwardDownJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardDownJump}`, allPieces[rightForwardDownJump])
-        pieceWeSingleJump = allPieces[parseInt(activatedPiece)+7].id
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+7].id
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+        
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardDownJump && allPieces[leftForwardDownJump].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardDownJump}`, allPieces[leftForwardDownJump])
-        pieceWeSingleJump = allPieces[parseInt(activatedPiece)+9].id
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+9].id
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+        
         resestAfterPieceIsJumpedSingle()
     }
-    
 }
 
 //reset after piece is jumped
 // we need to find what piece is being jumped first...
 function resestAfterPieceIsJumpedSingle(){
+    
     if(turn == 0 ){
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-        allPieces[pieceWeSingleJump].classList.remove("redPiece")
-        allPieces[pieceWeSingleJump].classList.add("hidden")
+        allPieces[pieceWeSingleJumped].classList.remove("redPiece")
+        allPieces[pieceWeSingleJumped].classList.add("hidden")
         allPieces[activatedPiece].classList.remove("bluePiece")
+        pieceCount()
         }
     else if(turn == 1 ){
-        console.log("pieceWeSingleJump",pieceWeSingleJump)
+        
+        console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("redPiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-        allPieces[pieceWeSingleJump].classList.remove("bluePiece")
-        allPieces[pieceWeSingleJump].classList.add("hidden")
+        allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
+        allPieces[pieceWeSingleJumped].classList.add("hidden")
         allPieces[activatedPiece].classList.remove("redPiece")
+        pieceCount()
         }
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
     })
+   
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
+    
+    
     
     winGameFunc()
 }
@@ -496,12 +511,31 @@ function pieceCount(){
 //Need win condition for when all pieces of a color are removed
 //Need to add logic for when player has no moves leftbut pieces.length > 0 
 function winGameFunc(){
-    pieceCount()
+    
     if (bluePieces.length == 0){
         console.log("Red Wins")
     } 
     if (redPieces.length == 0){
         console.log("Blue Wins")
     }
+    
     changeWhosTurn()
+}
+
+
+// making Kings when blue is on 1,3,5,7 and red is on 56,58,60,62
+
+function checkForKings(){
+
+    if(allPieces[1].classList.contains("bluePiece") || allPieces[3].classList.contains("bluePiece")|| allPieces[5].classList.contains("bluePiece")|| allPieces[7].classList.contains("bluePiece")){
+        console.log("Make Blue Piece King",allPieces[spotWeWantToMoveTO])
+        allPieces[spotWeWantToMoveTO].classList.add("blueKing")
+        allPieces[spotWeWantToMoveTO].classList.remove("bluePiece")
+    }
+    if(allPieces[56].classList.contains("redPiece") || allPieces[58].classList.contains("redPiece")|| allPieces[60].classList.contains("redPiece")|| allPieces[62].classList.contains("redPiece")){
+        console.log("Make Red Piece King",allPieces[spotWeWantToMoveTO])
+        allPieces[spotWeWantToMoveTO].classList.add("redKing")
+        allPieces[spotWeWantToMoveTO].classList.remove("bluePiece")
+    }
+    
 }

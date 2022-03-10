@@ -60,7 +60,14 @@
 .activatedPiece{
   border: solid black;
 }
-
+.blueKing{
+  background-color: gold;
+  border: solid blue;
+}
+.redKing{
+  background-color: gold;
+  border: solid red;
+}
 
   .hidden{
     display: flex; 
