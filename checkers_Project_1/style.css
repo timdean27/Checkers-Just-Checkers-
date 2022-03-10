@@ -1,3 +1,11 @@
+span{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+
+}
+
 #chessBoardContainer{
     height: 400px;
     width: 400px;

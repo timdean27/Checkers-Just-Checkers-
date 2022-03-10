@@ -225,7 +225,7 @@ function resestWithRemainingPeices(){
     pieceYouWantToMove(event)
     bluePieces = document.querySelectorAll(".bluePiece")
     redPieces = document.querySelectorAll(".redPiece")
-    pieceCount()
+    
 }
 
 
@@ -504,6 +504,8 @@ function resestAfterPieceIsJumpedSingle(){
 // keep count of pieces removed and remaining / should just be redPiece and bluePiece .length at each turn change
 
 function pieceCount(){
+    bluePieces = document.querySelectorAll(".bluePiece")
+    redPieces = document.querySelectorAll(".redPiece")
     document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length}`
     document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length}`
 }
