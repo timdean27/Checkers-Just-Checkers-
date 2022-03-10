@@ -386,7 +386,7 @@ function checkForJumps(){
                 //return true
             }
 // blue piece wants to Jump forward and to the left this is the fucntion to test if the piece is currently hidden
-        if(allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') && parseInt(activatedPiece)> 15)
+        if(parseInt(activatedPiece) != 17 && allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') && parseInt(activatedPiece)> 15)
             {
                 allPieces[activatedPiece-18].classList.add("PieceYouCanMoveTo")
                 leftForwardUPJump = allPieces[activatedPiece-18].id
@@ -396,7 +396,7 @@ function checkForJumps(){
             }
     }
 // red piece wants to Jump forward and to the right this is the function to test if the piece is currently hidden
-    if(turn === 1 && activatedPiece < 48){
+    if(turn === 1 && activatedPiece < 48  ){
         if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece')  && parseInt(activatedPiece) < 48)
             {
                 allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
@@ -406,7 +406,7 @@ function checkForJumps(){
                 //return true
             }
 // red piece wants to Jump foarwad and to the left this is the fucntion to test if the piece is currently hidden
-        if(allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece') && parseInt(activatedPiece) < 48 )
+        if(parseInt(activatedPiece) != 46 && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece') && parseInt(activatedPiece) < 48 )
             {
                 allPieces[parseInt(activatedPiece)+18].classList.add("PieceYouCanMoveTo")
                 leftForwardDownJump = allPieces[parseInt(activatedPiece)+18].id
