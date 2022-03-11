@@ -280,11 +280,23 @@ let leftForwardDownJump
 let pieceWeSingleJumped
 let clickWhereWeWantToMove
 let spotWeWantToMoveTO
+let bottomRowPlus55 = [55,56,58,60,62]
+let bottomRow = [56,58,60,62]
+let topRowPlus8 = [1,3,5,7,8]
+let topRow =[1,3,5,7]
 // blue piece wants to move foarwad and to the right this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the right will always be -7 away from the slected when blue is moveing forward 
 function checkForOpenSpotsNoJumps(){
     if(turn === 0 ){
-        if(allPieces[activatedPiece-7].classList.contains('hidden'))
+        if(allPieces[activatedPiece].classList.contains('blueKing')){
+            console.log("We are in function checkForOpemSpotsNoJumps and the activateied piece is king ",allPieces[activatedPiece] )
+            console.log("parseInt(activatedPiece) equals ", parseInt(activatedPiece))
+            console.log("parseInt(activatedPiece) is ", (typeof parseInt(activatedPiece)))
+            console.log("(topRow.some == parseInt(activatedPiece))", (topRow.some(num => num == parseInt(activatedPiece))))
+            console.log("(topRowPlus8.some == parseInt(activatedPiece)) ", (topRowPlus8.some(num => num == parseInt(activatedPiece))))
+            console.log("(bottomRow.some == parseInt(activatedPiece))", (bottomRow.some(num => num == parseInt(activatedPiece))))
+            console.log("(bottomRowPlus55.some == parseInt(activatedPiece))",(bottomRowPlus55.some(num => num == parseInt(activatedPiece))))
+            if( (topRow.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-7].classList.contains('hidden'))
             {
                 allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
@@ -292,38 +304,119 @@ function checkForOpenSpotsNoJumps(){
                 console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
                 //return true
             }
-// blue piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
+            if( (topRowPlus8.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-9].classList.contains('hidden') )
+                {
+                    allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
+                    leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
+                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
+                    //return true
+                }
+            if( (bottomRow.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
+                {
+                    allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
+                rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
+                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                    console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
+                    
+                }
+            if( (bottomRowPlus55.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+9].classList.contains('hidden') )
+                {
+                    allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
+                leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                    console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
+                    
+                }
+
+        }
+        else{
+            if(allPieces[activatedPiece-7].classList.contains('hidden'))
+                {
+                    allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
+                rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
+                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+                    console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
+                    
+                }
+// blue piece wants to move foarwad and to the left this is the function to test if the piece is currently hidden
 //the piece dirrectly to the left will always be -7 away from the slected when bblue is moveing forward 
-        if(parseInt(activatedPiece) != 8 && allPieces[activatedPiece-9].classList.contains('hidden') )
-            {
-                allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
+            if(parseInt(activatedPiece) != 8 && allPieces[activatedPiece-9].classList.contains('hidden') )
+                {
+                    allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
-                console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
-                console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
-                //return true
-            }
+                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
+                   
+                }
+        }
     }
 // red piece wants to move foarwad and to the right this is the function to test if the piece is currently hidden
 //the piece dirrectly to the right will always be +7 away from the slected when bblue is moveing forward
     if(turn === 1 ){
-        if(allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
-            {
-                allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
+        if(allPieces[activatedPiece].classList.contains('redKing')){
+            console.log("We are in function checkForOpemSpotsNoJumps and the activateied piece is king ",allPieces[activatedPiece] )
+            console.log("parseInt(activatedPiece) equals ", parseInt(activatedPiece))
+            console.log("parseInt(activatedPiece) is ", (typeof parseInt(activatedPiece)))
+            console.log("(topRow.some == parseInt(activatedPiece))", (topRow.some(num => num == parseInt(activatedPiece))))
+            console.log("(topRowPlus8.some == parseInt(activatedPiece)) ", (topRowPlus8.some(num => num == parseInt(activatedPiece))))
+            console.log("(bottomRow.some == parseInt(activatedPiece))", (bottomRow.some(num => num == parseInt(activatedPiece))))
+            console.log("(bottomRowPlus55.some == parseInt(activatedPiece))",(bottomRowPlus55.some(num => num == parseInt(activatedPiece))))
+            if( (topRow.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-7].classList.contains('hidden'))
+                {
+                    allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
+                rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
+                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+                    console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
+                    
+                }
+            if( (topRowPlus8.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-9].classList.contains('hidden') )
+                {
+                    allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
+                leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
+                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
+                    
+                }
+            if( (bottomRow.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
+                {
+                    allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
-                console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
-                console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
-                //return true
+                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                    console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
+                    
+                }
+            if( (bottomRowPlus55.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+9].classList.contains('hidden') )
+                {
+                    allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
+                leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                    console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
+                
+                }
+        }
+
+        
+        else{
+            if(allPieces[parseInt(activatedPiece)+7].classList.contains('hidden'))
+                {
+                    allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
+                    rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
+                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                    console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
+                    //return true
             }
 // red piece wants to move foarwad and to the left this is the fucntion to test if the piece is currently hidden
 //the piece dirrectly to the left will always be +9 away from the slected when bblue is moveing forward 
-        if(parseInt(activatedPiece) != 55 && allPieces[parseInt(activatedPiece)+9].classList.contains('hidden') )
-            {
-                allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
-                leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
-                console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
-                console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
-                //return true
-            }
+            if(parseInt(activatedPiece) != 55 && allPieces[parseInt(activatedPiece)+9].classList.contains('hidden') )
+                {
+                    allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
+                    leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                    console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
+                    //return true
+                }
+        }
     }
     // clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
     //     clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
