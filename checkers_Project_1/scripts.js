@@ -317,32 +317,39 @@ function checkForOpenSpotsNoJumps(){
 //function to clear and reset classes after a piece is moved
 // this is only for single movements forward going to make seprate function for jumps
 function resestAfterPieceIsMoved(){
+    
     if(turn == 0 ){
+       
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
         allPieces[activatedPiece].classList.remove("bluePiece")
-       
+        checkForKings()
+        pieceCount()
         }
     else if(turn == 1 ){
+       
         allPieces[spotWeWantToMoveTO].classList.add("redPiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
         allPieces[activatedPiece].classList.remove("redPiece")
+        checkForKings()
+        pieceCount()
         }
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
     })
+
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
-    rightForwardOpenPieceUP =0
-    leftForwardOpenPieceUp =0
-    rightForwardOpenPieceDown =0
-    leftForwardOpenPieceDown =0
-    rightForwardUPJump =0
-    leftForwardUPJump =0
-    rightForwardDownJump =0
-    leftForwardDownJump=0
-    spotWeWantToMoveTO =0
+    rightForwardOpenPieceUP = 0
+    leftForwardOpenPieceUp = 0
+    rightForwardOpenPieceDown = 0
+    leftForwardOpenPieceDown = 0
+    rightForwardUPJump = 0
+    leftForwardUPJump = 0
+    rightForwardDownJump = 0
+    leftForwardDownJump= 0
+    spotWeWantToMoveTO = 0
     winGameFunc()
 }
 
@@ -355,21 +362,25 @@ function movePiece(event){
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
+        
         resestAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceUp  && allPieces[leftForwardOpenPieceUp].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceUp }`, allPieces[leftForwardOpenPieceUp])
+        
         resestAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceDown && allPieces[rightForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceDown}`, allPieces[rightForwardOpenPieceDown])
+        
         resestAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceDown && allPieces[leftForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceDown}`, allPieces[leftForwardOpenPieceDown])
+        
         resestAfterPieceIsMoved()
     }
     singleJumpMovePiece()
@@ -436,6 +447,7 @@ function singleJumpMovePiece(){
         console.log(`You Want to move to spot${rightForwardUPJump}`, allPieces[rightForwardUPJump])
         pieceWeSingleJumped = allPieces[activatedPiece-7].id
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+        
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
@@ -476,7 +488,9 @@ function resestAfterPieceIsJumpedSingle(){
         allPieces[pieceWeSingleJumped].classList.remove("redPiece")
         allPieces[pieceWeSingleJumped].classList.add("hidden")
         allPieces[activatedPiece].classList.remove("bluePiece")
+        checkForKings()
         pieceCount()
+       
         }
     else if(turn == 1 ){
         
@@ -486,7 +500,9 @@ function resestAfterPieceIsJumpedSingle(){
         allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
         allPieces[pieceWeSingleJumped].classList.add("hidden")
         allPieces[activatedPiece].classList.remove("redPiece")
+        checkForKings()
         pieceCount()
+        
         }
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
@@ -537,7 +553,7 @@ function checkForKings(){
     if(allPieces[56].classList.contains("redPiece") || allPieces[58].classList.contains("redPiece")|| allPieces[60].classList.contains("redPiece")|| allPieces[62].classList.contains("redPiece")){
         console.log("Make Red Piece King",allPieces[spotWeWantToMoveTO])
         allPieces[spotWeWantToMoveTO].classList.add("redKing")
-        allPieces[spotWeWantToMoveTO].classList.remove("bluePiece")
+        allPieces[spotWeWantToMoveTO].classList.remove("redPiece")
     }
     
 }
