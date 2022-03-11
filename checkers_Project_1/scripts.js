@@ -134,8 +134,8 @@ let bluePieces = document.querySelectorAll(".bluePiece")
 //bluePieces.forEach(bluePiece=>{console.log(bluePiece)})
 let redPieces = document.querySelectorAll(".redPiece")
 //redPieces.forEach(redPiece=>{console.log(redPiece)})
-
-
+blueKings = document.querySelectorAll(".blueKing")
+redKings = document.querySelectorAll(".redKing")
 
 
 
@@ -147,18 +147,24 @@ function addClickeventToPieces(){
             bluePieces.forEach(bluePiece=>{
                 bluePiece.addEventListener("click", resestWithRemainingPeices)
                 //console.log(bluePiece)
-                              
             })
+                blueKings.forEach(blueKing=>{
+                    blueKing.addEventListener("click", resestWithRemainingPeices)
+                    console.log(blueKing)          
+                })
         console.log("Event Listener was added for Blue:")
         console.log("turn check 2:",turn)
     }
-
+    
     else{
             redPieces.forEach(redPiece=>{
                 redPiece.addEventListener("click", resestWithRemainingPeices)
                 //console.log(redPiece)
-                
             })
+                redKings.forEach(redKing=>{
+                    redKing.addEventListener("click", resestWithRemainingPeices)
+                    console.log(redKing)
+                })
         console.log("Event Listener was added for Red:")
         console.log("turn check 3:",turn)
     }
@@ -177,7 +183,6 @@ turnTrackerHTML.innerText = "Turn Tracker: We Always Start at Blue for now"
 // }
 function changeWhosTurn(){
    
-    
     if(turn == 0){
         turnTrackerHTML.innerText = "Turn Tracker: Red"
         turnTrackerHTML.style.color="red"
@@ -209,17 +214,25 @@ function removeEventListenerWhenNotTurn(){
     if(turn === 0){
             bluePieces.forEach(bluePiece=>{
             bluePiece.removeEventListener("click", resestWithRemainingPeices)
+             })
             //console.log(bluePiece)
-            
-        })
+                    blueKings.forEach(blueKing=>{
+                    blueKing.removeEventListener("click", resestWithRemainingPeices)
+                    console.log(blueKing)
+                    })
+        
         console.log("Event Listener was removed for Blue")
     }
     else{
             redPieces.forEach(redPiece=>{
             redPiece.removeEventListener("click", resestWithRemainingPeices)
             //console.log(redPiece)
-            
             })
+                redKings.forEach(redKing=>{
+                redKing.removeEventListener("click", resestWithRemainingPeices)
+                console.log(redKing)
+                
+                })
         console.log("Event Listener was removed for Red:",)
     }
 
