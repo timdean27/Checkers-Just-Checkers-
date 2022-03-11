@@ -135,6 +135,10 @@ let bluePieces = document.querySelectorAll(".bluePiece")
 let redPieces = document.querySelectorAll(".redPiece")
 //redPieces.forEach(redPiece=>{console.log(redPiece)})
 
+
+
+
+
 let turn = 0;
 console.log("turn check 1:",turn)
  
@@ -225,7 +229,11 @@ function resestWithRemainingPeices(){
     pieceYouWantToMove(event)
     bluePieces = document.querySelectorAll(".bluePiece")
     redPieces = document.querySelectorAll(".redPiece")
-    
+    blueKings = document.querySelectorAll(".blueKing")
+    redKings = document.querySelectorAll(".redKing")
+
+    console.log("pices with blueKing class run in resestWithRemainingPeices()",blueKings)
+    console.log("pices with redKing class run in resestWithRemainingPeices()",redKings )
 }
 
 
