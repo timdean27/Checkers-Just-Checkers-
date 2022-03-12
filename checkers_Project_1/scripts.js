@@ -526,9 +526,9 @@ function movePiece(event){
 // jump forward left up will be (id - 18) forward right up (id - 14)
 // jump forward left up will be (id + 18) forward right up (id + 14)
 let bottomTwoRowsPlus40 = [40,49,51,53,55,56,58,60,62]
-let bottomTwoRows = [49,51,53,55,56,58,60,62]
+let bottomTwoRowsPlus46 = [46,49,51,53,55,56,58,60,62]
 let topTwoRowsPlus23 = [1,3,5,7,8,10,12,14,23]
-let topTwoRows =[1,3,5,7,8,10,12,14]
+let topTwoRowsPlus17  =[1,3,5,7,8,10,12,14,17]
 
 function checkForJumps(){
     console.log("We are checking for jumps")
@@ -541,7 +541,7 @@ function checkForJumps(){
                 console.log("(topRowPlus8.some == parseInt(activatedPiece)) ", (topRowPlus8.some(num => num == parseInt(activatedPiece))))
                 console.log("(bottomRow.some == parseInt(activatedPiece))", (bottomRow.some(num => num == parseInt(activatedPiece))))
                 console.log("(bottomRowPlus55.some == parseInt(activatedPiece))",(bottomRowPlus55.some(num => num == parseInt(activatedPiece))))
-                if( (topTwoRows.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-14].classList.contains('hidden')&& allPieces[activatedPiece-7].classList.contains('redPiece'))
+                if( (topTwoRowsPlus23.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-14].classList.contains('hidden')&& allPieces[activatedPiece-7].classList.contains('redPiece'))
                     {
                         allPieces[activatedPiece-14].classList.add("PieceYouCanMoveTo")
                     rightForwardUPJump = allPieces[activatedPiece-14].id
@@ -549,7 +549,7 @@ function checkForJumps(){
                         console.log(`You can Jump to the Forward Right UP`,allPieces[rightForwardUPJump])
                        
                     }
-                if( (topTwoRowsPlus23.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') )
+                if( (topTwoRowsPlus17.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-18].classList.contains('hidden')&& allPieces[activatedPiece-9].classList.contains('redPiece') )
                     {
                         allPieces[activatedPiece-18].classList.add("PieceYouCanMoveTo")
                     leftForwardUPJump = allPieces[activatedPiece-18].id
@@ -557,7 +557,7 @@ function checkForJumps(){
                         console.log(`You can Jump to the Forward left UP`,allPieces[leftForwardUPJump])
                         
                     }
-                if( (bottomTwoRows.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('redPiece'))
+                if( (bottomTwoRowsPlus40.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('redPiece'))
                     {
                         allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
                     rightForwardDownJump = allPieces[parseInt(activatedPiece)+14].id
@@ -565,7 +565,7 @@ function checkForJumps(){
                         console.log(`You can Jump to the Forward Right DOWN`,allPieces[rightForwardDownJump])
                         
                     }
-                if( (bottomTwoRowsPlus40.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('redPiece') )
+                if( (bottomTwoRowsPlus46.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('redPiece') )
                     {
                         allPieces[parseInt(activatedPiece)+18].classList.add("PieceYouCanMoveTo")
                     leftForwardDownJump = allPieces[parseInt(activatedPiece)+18].id
@@ -608,7 +608,7 @@ function checkForJumps(){
         console.log("(topRowPlus8.some == parseInt(activatedPiece)) ", (topRowPlus8.some(num => num == parseInt(activatedPiece))))
         console.log("(bottomRow.some == parseInt(activatedPiece))", (bottomRow.some(num => num == parseInt(activatedPiece))))
         console.log("(bottomRowPlus55.some == parseInt(activatedPiece))",(bottomRowPlus55.some(num => num == parseInt(activatedPiece))))
-        if( (topTwoRows.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)-7].classList.contains('bluePiece'))
+        if( (topTwoRowsPlus23.some(num => num == parseInt(activatedPiece)) == false) && allPieces[activatedPiece-14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)-7].classList.contains('bluePiece'))
             {
                 allPieces[activatedPiece-14].classList.add("PieceYouCanMoveTo")
             rightForwardUPJump = allPieces[activatedPiece-14].id
@@ -616,7 +616,7 @@ function checkForJumps(){
                 console.log(`You can Jump to the Forward Right UP`,allPieces[rightForwardUPJump])
             
             }
-        if( (topTwoRowsPlus23.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-18].classList.contains('hidden') && allPieces[parseInt(activatedPiece)-9].classList.contains('bluePiece') )
+        if( (topTwoRowsPlus17.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-18].classList.contains('hidden') && allPieces[parseInt(activatedPiece)-9].classList.contains('bluePiece') )
             {
                 allPieces[activatedPiece-18].classList.add("PieceYouCanMoveTo")
             leftForwardUPJump = allPieces[activatedPiece-18].id
@@ -624,7 +624,7 @@ function checkForJumps(){
                 console.log(`You can Jump to the Forward left UP`,allPieces[leftForwardUPJump])
                 
             }
-        if( (bottomTwoRows.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece'))
+        if( (bottomTwoRowsPlus40.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+14].classList.contains('hidden') && allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece'))
             {
                 allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
             rightForwardDownJump = allPieces[parseInt(activatedPiece)+14].id
@@ -632,7 +632,7 @@ function checkForJumps(){
                 console.log(`You can Jump to the Forward Right DOWN`,allPieces[rightForwardDownJump])
                 
             }
-        if( (bottomTwoRowsPlus40.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece') )
+        if( (bottomTwoRowsPlus46.some(num => num == parseInt(activatedPiece)) == false) && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece') )
             {
                 allPieces[parseInt(activatedPiece)+18].classList.add("PieceYouCanMoveTo")
             leftForwardDownJump = allPieces[parseInt(activatedPiece)+18].id
@@ -715,7 +715,7 @@ function singleJumpMovePiece(){
 // we need to find what piece is being jumped first...
 function resestAfterPieceIsJumpedSingle(){
     
-    if(turn == 0 ){
+    if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
         
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
@@ -727,7 +727,20 @@ function resestAfterPieceIsJumpedSingle(){
         pieceCount()
        
         }
-    else if(turn == 1 ){
+    else  if(turn == 0 && allPieces[activatedPiece].classList.contains("blueKing")){
+        
+            console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+            allPieces[spotWeWantToMoveTO].classList.add("blueKing")
+            allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+            allPieces[pieceWeSingleJumped].classList.remove("redPiece")
+            allPieces[pieceWeSingleJumped].classList.add("hidden")
+            allPieces[activatedPiece].classList.remove("blueKing")
+            checkForKings()
+            pieceCount()
+           
+        }
+
+    else if(turn == 1 && allPieces[activatedPiece].classList.contains("redPiece")){
         
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("redPiece")
@@ -739,6 +752,18 @@ function resestAfterPieceIsJumpedSingle(){
         pieceCount()
         
         }
+        else if(turn == 1 && allPieces[activatedPiece].classList.contains("redKing")){
+        
+            console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+            allPieces[spotWeWantToMoveTO].classList.add("redKing")
+            allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+            allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
+            allPieces[pieceWeSingleJumped].classList.add("hidden")
+            allPieces[activatedPiece].classList.remove("redKing")
+            checkForKings()
+            pieceCount()
+            
+            }
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
@@ -757,18 +782,20 @@ function resestAfterPieceIsJumpedSingle(){
 function pieceCount(){
     bluePieces = document.querySelectorAll(".bluePiece")
     redPieces = document.querySelectorAll(".redPiece")
-    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length}`
-    document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length}`
+    blueKings = document.querySelectorAll(".blueKing")
+    redKings = document.querySelectorAll(".redKing")
+    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length+blueKings.length}`
+    document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length+redKings.length}`
 }
 
 //Need win condition for when all pieces of a color are removed
 //Need to add logic for when player has no moves leftbut pieces.length > 0 
 function winGameFunc(){
     
-    if (bluePieces.length == 0){
+    if (bluePieces.length+blueKings.length == 0){
         console.log("Red Wins")
     } 
-    if (redPieces.length == 0){
+    if (redPieces.length+redKings.length == 0){
         console.log("Blue Wins")
     }
     
