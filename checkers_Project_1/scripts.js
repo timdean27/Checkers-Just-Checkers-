@@ -304,7 +304,7 @@ function checkForOpenSpotsNoJumps(){
                 console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
                 //return true
             }
-            if( (topRowPlus8.some(num => num == parseInt(activatedPiece))== false) && allPieces[activatedPiece-9].classList.contains('hidden') )
+            if( (topRowPlus8.some(num => num == parseInt(activatedPiece))== false) && allPieces[parseInt(activatedPiece)-9].classList.contains('hidden') )
                 {
                     allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                     leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
@@ -645,7 +645,7 @@ function checkForJumps(){
 
     else{
         if(turn === 1 && activatedPiece < 48  ){
-            if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden')&& parseInt(activatedPiece) < 48 && (allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece')|| allPieces[parseInt(activatedPiece)+9].classList.contains('blueKing'))  )
+            if(allPieces[parseInt(activatedPiece)+14].classList.contains('hidden')&& parseInt(activatedPiece) < 48 && (allPieces[parseInt(activatedPiece)+7].classList.contains('bluePiece')|| allPieces[parseInt(activatedPiece)+7].classList.contains('blueKing')))
                 {
                     allPieces[parseInt(activatedPiece)+14].classList.add("PieceYouCanMoveTo")
                     rightForwardDownJump = allPieces[parseInt(activatedPiece)+14].id
@@ -654,7 +654,7 @@ function checkForJumps(){
                     //return true
                 }
     // red piece wants to Jump foarwad and to the left this is the fucntion to test if the piece is currently hidden
-            if(parseInt(activatedPiece) != 46 && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& parseInt(activatedPiece) < 48 && (allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece')|| allPieces[parseInt(activatedPiece)+9].classList.contains('blueKing'))  )
+            if(parseInt(activatedPiece) != 46 && allPieces[parseInt(activatedPiece)+18].classList.contains('hidden')&& parseInt(activatedPiece) < 48 && (allPieces[parseInt(activatedPiece)+9].classList.contains('bluePiece')|| allPieces[parseInt(activatedPiece)+9].classList.contains('blueKing')))
                 {
                     allPieces[parseInt(activatedPiece)+18].classList.add("PieceYouCanMoveTo")
                     leftForwardDownJump = allPieces[parseInt(activatedPiece)+18].id
@@ -720,20 +720,32 @@ function resestAfterPieceIsJumpedSingle(){
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-        allPieces[pieceWeSingleJumped].classList.remove("redPiece")
-        allPieces[pieceWeSingleJumped].classList.add("hidden")
+            if(allPieces[pieceWeSingleJumped].classList.contains("redKing")){
+                allPieces[pieceWeSingleJumped].classList.remove("redKing")
+                allPieces[pieceWeSingleJumped].classList.add("hidden")
+            }
+            else{
+            allPieces[pieceWeSingleJumped].classList.remove("redPiece")
+            allPieces[pieceWeSingleJumped].classList.add("hidden")
+            }
         allPieces[activatedPiece].classList.remove("bluePiece")
         checkForKings()
         pieceCount()
        
         }
-    else  if(turn == 0 && allPieces[activatedPiece].classList.contains("blueKing")){
+    else if(turn == 0 && allPieces[activatedPiece].classList.contains("blueKing")){
         
             console.log("pieceWeSingleJumped",pieceWeSingleJumped)
             allPieces[spotWeWantToMoveTO].classList.add("blueKing")
             allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-            allPieces[pieceWeSingleJumped].classList.remove("redPiece")
-            allPieces[pieceWeSingleJumped].classList.add("hidden")
+                if(allPieces[pieceWeSingleJumped].classList.contains("redKing")){
+                    allPieces[pieceWeSingleJumped].classList.remove("redKing")
+                    allPieces[pieceWeSingleJumped].classList.add("hidden")
+                }
+                else{
+                allPieces[pieceWeSingleJumped].classList.remove("redPiece")
+                allPieces[pieceWeSingleJumped].classList.add("hidden")
+                }
             allPieces[activatedPiece].classList.remove("blueKing")
             checkForKings()
             pieceCount()
@@ -745,25 +757,38 @@ function resestAfterPieceIsJumpedSingle(){
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         allPieces[spotWeWantToMoveTO].classList.add("redPiece")
         allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-        allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
-        allPieces[pieceWeSingleJumped].classList.add("hidden")
+            if(allPieces[pieceWeSingleJumped].classList.contains("blueKing")){
+                allPieces[pieceWeSingleJumped].classList.remove("blueKing")
+                allPieces[pieceWeSingleJumped].classList.add("hidden")
+            }
+            else{
+            allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
+            allPieces[pieceWeSingleJumped].classList.add("hidden")
+            }
         allPieces[activatedPiece].classList.remove("redPiece")
         checkForKings()
         pieceCount()
         
         }
-        else if(turn == 1 && allPieces[activatedPiece].classList.contains("redKing")){
+    else if(turn == 1 && allPieces[activatedPiece].classList.contains("redKing")){
         
             console.log("pieceWeSingleJumped",pieceWeSingleJumped)
             allPieces[spotWeWantToMoveTO].classList.add("redKing")
             allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-            allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
-            allPieces[pieceWeSingleJumped].classList.add("hidden")
+                if(allPieces[pieceWeSingleJumped].classList.contains("blueKing")){
+                    allPieces[pieceWeSingleJumped].classList.remove("blueKing")
+                    allPieces[pieceWeSingleJumped].classList.add("hidden")
+                }
+                else{
+                allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
+                allPieces[pieceWeSingleJumped].classList.add("hidden")
+                }
             allPieces[activatedPiece].classList.remove("redKing")
             checkForKings()
             pieceCount()
             
-            }
+        }
+    
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
@@ -821,7 +846,6 @@ function checkForKings(){
 }
 
 
-// function placeHolder(num, piece){
+// function allPiecesSearchFunc(num, piece){
 //     return allPieces[parseInt(activatedPiece)+num].classList.contains(piece)
-
 // }
