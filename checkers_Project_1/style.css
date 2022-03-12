@@ -54,7 +54,7 @@ span{
   }
 .nullPiece{
     background-color: white;
-    opacity: 0%;
+    opacity: 100%;
 }
 .PotentialyUseablePieces{
     background-color: green;
@@ -81,10 +81,12 @@ span{
   .hidden{
     /* visibility: hidden */
     background-color: yellow;
-    opacity: 0%;
+    opacity: 100%;
   }
   .PieceYouCanMoveTo{
     background-color: purple;
     border: solid black;
     opacity: 100%;
   }
+
+ 
