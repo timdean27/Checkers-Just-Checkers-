@@ -145,11 +145,11 @@ console.log("turn check 1:",turn)
 function addClickeventToPieces(){
     if(turn === 0){
             bluePieces.forEach(bluePiece=>{
-                bluePiece.addEventListener("click", resestWithRemainingPeices)
+                bluePiece.addEventListener("click", resetWithRemainingPeices)
                 //console.log(bluePiece)
             })
                 blueKings.forEach(blueKing=>{
-                    blueKing.addEventListener("click", resestWithRemainingPeices)
+                    blueKing.addEventListener("click", resetWithRemainingPeices)
                     console.log(blueKing)          
                 })
         console.log("Event Listener was added for Blue:")
@@ -158,11 +158,11 @@ function addClickeventToPieces(){
     
     else{
             redPieces.forEach(redPiece=>{
-                redPiece.addEventListener("click", resestWithRemainingPeices)
+                redPiece.addEventListener("click", resetWithRemainingPeices)
                 //console.log(redPiece)
             })
                 redKings.forEach(redKing=>{
-                    redKing.addEventListener("click", resestWithRemainingPeices)
+                    redKing.addEventListener("click", resetWithRemainingPeices)
                     console.log(redKing)
                 })
         console.log("Event Listener was added for Red:")
@@ -213,11 +213,11 @@ addClickeventToPieces()
 function removeEventListenerWhenNotTurn(){
     if(turn === 0){
             bluePieces.forEach(bluePiece=>{
-            bluePiece.removeEventListener("click", resestWithRemainingPeices)
+            bluePiece.removeEventListener("click", resetWithRemainingPeices)
              })
             //console.log(bluePiece)
                     blueKings.forEach(blueKing=>{
-                    blueKing.removeEventListener("click", resestWithRemainingPeices)
+                    blueKing.removeEventListener("click", resetWithRemainingPeices)
                     console.log(blueKing)
                     })
         
@@ -225,11 +225,11 @@ function removeEventListenerWhenNotTurn(){
     }
     else{
             redPieces.forEach(redPiece=>{
-            redPiece.removeEventListener("click", resestWithRemainingPeices)
+            redPiece.removeEventListener("click", resetWithRemainingPeices)
             //console.log(redPiece)
             })
                 redKings.forEach(redKing=>{
-                redKing.removeEventListener("click", resestWithRemainingPeices)
+                redKing.removeEventListener("click", resetWithRemainingPeices)
                 console.log(redKing)
                 
                 })
@@ -238,15 +238,15 @@ function removeEventListenerWhenNotTurn(){
 
 }
 
-function resestWithRemainingPeices(){
+function resetWithRemainingPeices(){
     pieceYouWantToMove(event)
     bluePieces = document.querySelectorAll(".bluePiece")
     redPieces = document.querySelectorAll(".redPiece")
     blueKings = document.querySelectorAll(".blueKing")
     redKings = document.querySelectorAll(".redKing")
 
-    console.log("pices with blueKing class run in resestWithRemainingPeices()",blueKings)
-    console.log("pices with redKing class run in resestWithRemainingPeices()",redKings )
+    console.log("pices with blueKing class run in resetWithRemainingPeices()",blueKings)
+    console.log("pices with redKing class run in resetWithRemainingPeices()",redKings )
 }
 
 
@@ -430,7 +430,7 @@ function checkForOpenSpotsNoJumps(){
 
 //function to clear and reset classes after a piece is moved
 // this is only for single movements forward going to make seprate function for jumps
-function resestAfterPieceIsMoved(){
+function resetAfterPieceIsMoved(){
     
     if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
        
@@ -497,25 +497,25 @@ function movePiece(event){
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
         
-        resestAfterPieceIsMoved()
+        resetAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceUp  && allPieces[leftForwardOpenPieceUp].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceUp }`, allPieces[leftForwardOpenPieceUp])
         
-        resestAfterPieceIsMoved()
+        resetAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceDown && allPieces[rightForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceDown}`, allPieces[rightForwardOpenPieceDown])
         
-        resestAfterPieceIsMoved()
+        resetAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceDown && allPieces[leftForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceDown}`, allPieces[leftForwardOpenPieceDown])
         
-        resestAfterPieceIsMoved()
+        resetAfterPieceIsMoved()
     }
     singleJumpMovePiece()
 }
@@ -673,6 +673,9 @@ function checkForJumps(){
         clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
             clickWeWantToMove.addEventListener("click", movePiece)
         })
+
+        console.log(clickWhereWeWantToMove.length)
+        console.log(clickWhereWeWantToMove)
 }
 
 
@@ -687,7 +690,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[activatedPiece-7].id
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         
-        resestAfterPieceIsJumpedSingle()
+        resetAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardUPJump  && allPieces[leftForwardUPJump].classList.contains("PieceYouCanMoveTo")){
@@ -695,7 +698,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[activatedPiece-9].id
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         
-        resestAfterPieceIsJumpedSingle()
+        resetAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardDownJump  && allPieces[rightForwardDownJump].classList.contains("PieceYouCanMoveTo")){
@@ -703,7 +706,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+7].id
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         
-        resestAfterPieceIsJumpedSingle()
+        resetAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardDownJump && allPieces[leftForwardDownJump].classList.contains("PieceYouCanMoveTo")){
@@ -711,13 +714,13 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+9].id
         console.log("pieceWeSingleJumped",pieceWeSingleJumped)
         
-        resestAfterPieceIsJumpedSingle()
+        resetAfterPieceIsJumpedSingle()
     }
 }
 
 //reset after piece is jumped
 // we need to find what piece is being jumped first...
-function resestAfterPieceIsJumpedSingle(){
+function resetAfterPieceIsJumpedSingle(){
     
     if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
         
@@ -792,6 +795,7 @@ function resestAfterPieceIsJumpedSingle(){
             pieceCount()
             
         }
+    
     
     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
         whereWeWantToMove.removeEventListener("click", movePiece)
