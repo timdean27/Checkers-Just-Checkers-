@@ -737,84 +737,23 @@ function resestAfterPieceIsJumpedSingle(){
     console.log("Trying to run check for double Jumps func")
 
         if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
-            
-            console.log("pieceWeSingleJumped",pieceWeSingleJumped)
-            allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
-            allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-            console.log(allPieces[spotWeWantToMoveTO])
-                if(allPieces[pieceWeSingleJumped].classList.contains("redKing")){
-                    allPieces[pieceWeSingleJumped].classList.remove("redKing")
-                    allPieces[pieceWeSingleJumped].classList.add("hidden")
-                }
-                else{
-                allPieces[pieceWeSingleJumped].classList.remove("redPiece")
-                allPieces[pieceWeSingleJumped].classList.add("hidden")
-                }
-            allPieces[activatedPiece].classList.remove("bluePiece")
-            allPieces[activatedPiece].classList.remove("activatedPiece")
-            allPieces[activatedPiece].classList.add("hidden")
-
+           cleanInnerSingleJumpFunc("bluePiece","redKing","redPiece")
+        }     
         
-            }
         else if(turn == 0 && allPieces[activatedPiece].classList.contains("blueKing")){
-            
-                console.log("pieceWeSingleJumped",pieceWeSingleJumped)
-                allPieces[spotWeWantToMoveTO].classList.add("blueKing")
-                allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-                    if(allPieces[pieceWeSingleJumped].classList.contains("redKing")){
-                        allPieces[pieceWeSingleJumped].classList.remove("redKing")
-                        allPieces[pieceWeSingleJumped].classList.add("hidden")
-                    }
-                    else{
-                    allPieces[pieceWeSingleJumped].classList.remove("redPiece")
-                    allPieces[pieceWeSingleJumped].classList.add("hidden")
-                    }
-                allPieces[activatedPiece].classList.remove("blueKing")
-                allPieces[activatedPiece].classList.remove("activatedPiece")
-                allPieces[activatedPiece].classList.add("hidden")
-
-            
-            }
+            cleanInnerSingleJumpFunc("blueKing","redKing","redPiece") 
+        }
 
         else if(turn == 1 && allPieces[activatedPiece].classList.contains("redPiece")){
             
-            console.log("pieceWeSingleJumped",pieceWeSingleJumped)
-            allPieces[spotWeWantToMoveTO].classList.add("redPiece")
-            allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-                if(allPieces[pieceWeSingleJumped].classList.contains("blueKing")){
-                    allPieces[pieceWeSingleJumped].classList.remove("blueKing")
-                    allPieces[pieceWeSingleJumped].classList.add("hidden")
-                }
-                else{
-                allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
-                allPieces[pieceWeSingleJumped].classList.add("hidden")
-                }
-            allPieces[activatedPiece].classList.remove("redPiece")
-            allPieces[activatedPiece].classList.remove("activatedPiece")
-            allPieces[activatedPiece].classList.add("hidden")
-
-             
-            
-            }
+            cleanInnerSingleJumpFunc("redPiece","blueKing","bluePiece")
+        }
         else if(turn == 1 && allPieces[activatedPiece].classList.contains("redKing")){
+
+            cleanInnerSingleJumpFunc("redKing","blueKing","bluePiece")
             
-                console.log("pieceWeSingleJumped",pieceWeSingleJumped)
-                allPieces[spotWeWantToMoveTO].classList.add("redKing")
-                allPieces[spotWeWantToMoveTO].classList.remove("hidden")
-                    if(allPieces[pieceWeSingleJumped].classList.contains("blueKing")){
-                        allPieces[pieceWeSingleJumped].classList.remove("blueKing")
-                        allPieces[pieceWeSingleJumped].classList.add("hidden")
-                    }
-                    else{
-                    allPieces[pieceWeSingleJumped].classList.remove("bluePiece")
-                    allPieces[pieceWeSingleJumped].classList.add("hidden")
-                    }
-                allPieces[activatedPiece].classList.remove("redKing")
-                allPieces[activatedPiece].classList.remove("activatedPiece")
-                allPieces[activatedPiece].classList.add("hidden")
-                
-                
-            }
+        }
+
                 if (checkedForDoubleJumps == false){
                     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
                         whereWeWantToMove.removeEventListener("click", movePiece)
@@ -836,12 +775,11 @@ function resestAfterPieceIsJumpedSingle(){
                     checkedForDoubleJumps = false
                     winGameFunc()
                 }
-            
-
 
         pieceCount()
            
 }
+
 function NoJumpsAvaliablefunc(){
     //NoJumpsAvaliable = true
     console.log(clickWhereWeWantToMove)
@@ -921,6 +859,28 @@ function checkForDoubleJumps(){
 }
 
 
+
+
+
+
 function allPiecesClassContFunc(num, pieceClass){
     return allPieces[parseInt(activatedPiece)+num].classList.contains(pieceClass)
+}
+
+function cleanInnerSingleJumpFunc(classWeAre,oppKing,oppPiece){
+    console.log("pieceWeSingleJumped",pieceWeSingleJumped)
+allPieces[spotWeWantToMoveTO].classList.add(classWeAre)
+allPieces[spotWeWantToMoveTO].classList.remove("hidden")
+console.log(allPieces[spotWeWantToMoveTO])
+    if(allPieces[pieceWeSingleJumped].classList.contains(oppKing)){
+        allPieces[pieceWeSingleJumped].classList.remove(oppKing)
+        allPieces[pieceWeSingleJumped].classList.add("hidden")
+    }
+    else{
+    allPieces[pieceWeSingleJumped].classList.remove(oppPiece)
+    allPieces[pieceWeSingleJumped].classList.add("hidden")
+    }
+allPieces[activatedPiece].classList.remove(classWeAre)
+allPieces[activatedPiece].classList.remove("activatedPiece")
+allPieces[activatedPiece].classList.add("hidden")
 }
