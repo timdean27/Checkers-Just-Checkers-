@@ -259,26 +259,26 @@ function pieceYouWantToMove(event){
     //changeWhosTurn() // this should be added once piece is selected to move to 
     checkForOpenSpotsNoJumps()
 
-    // document.querySelector(".activatedPiece").addEventListener("click", DoubleClickedActivatedPiece)
+    document.querySelector(".activatedPiece").addEventListener("click", DoubleClickedActivatedPiece)
     
 }
 
-// function DoubleClickedActivatedPiece(){
+function DoubleClickedActivatedPiece(){
     
-//     allPieces[activatedPiece].classList.remove("activatedPiece")
-//     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
+    allPieces[activatedPiece].classList.remove("activatedPiece")
+    allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
 
-//     console.log("you double clicked the active piece")
-//     WeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
+    console.log("you double clicked the active piece")
     
-//         WeWantToMove.forEach(WantToMove=>{
-//             console.log(WeWantToMove)
-//             WantToMove.classList.remove(".PieceYouCanMoveTo")
-//             WantToMove.removeEventListener("click", movePiece)
-//         })
+    
+    clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
+        whereWeWantToMove.removeEventListener("click", movePiece)
+        whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
+    })
 
-//     addClickeventToPieces()
-// }
+    addClickeventToPieces()
+}
+
 
 
 //lets try this again...
@@ -451,7 +451,8 @@ function checkForOpenSpotsNoJumps(){
 //function to clear and reset classes after a piece is moved
 // this is only for single movements forward going to make seprate function for jumps
 function resestAfterPieceIsMoved(){
-    
+    allPieces[activatedPiece].classList.remove("activatedPiece")
+    allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
     if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
        
         allPieces[spotWeWantToMoveTO].classList.add("bluePiece")
@@ -760,6 +761,9 @@ function singleJumpMovePiece(){
 //reset after piece is jumped
 // we need to find what piece is being jumped first...
 function resestAfterPieceIsJumpedSingle(){
+    allPieces[activatedPiece].classList.remove("activatedPiece")
+    allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
+
     console.log("Piece We jumped to allPieces[spotWeWantToMoveTO] in resetPieceAfter jump func",allPieces[spotWeWantToMoveTO])
     console.log("Trying to run check for double Jumps func")
 
