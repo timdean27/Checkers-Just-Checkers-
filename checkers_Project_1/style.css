@@ -107,6 +107,7 @@ border-radius: 10px;
   .PieceYouCanMoveTo{
     background-color: purple;
     border: solid black;
+    box-shadow: 5px  5px purple;
     opacity: 100%;
   }
 

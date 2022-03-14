@@ -258,18 +258,27 @@ function pieceYouWantToMove(event){
     removeEventListenerWhenNotTurn()
     //changeWhosTurn() // this should be added once piece is selected to move to 
     checkForOpenSpotsNoJumps()
+
+    // document.querySelector(".activatedPiece").addEventListener("click", DoubleClickedActivatedPiece)
     
 }
 
-// let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
-// TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
+// function DoubleClickedActivatedPiece(){
+    
+//     allPieces[activatedPiece].classList.remove("activatedPiece")
+//     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
 
-// function TestRemoveEventButtonTestFunc(){
-//     activatedPiece = ""
-//     resetWithRemainingPeices()
+//     console.log("you double clicked the active piece")
+//     WeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
+    
+//         WeWantToMove.forEach(WantToMove=>{
+//             console.log(WeWantToMove)
+//             WantToMove.classList.remove(".PieceYouCanMoveTo")
+//             WantToMove.removeEventListener("click", movePiece)
+//         })
+
+//     addClickeventToPieces()
 // }
-
-
 
 
 //lets try this again...
@@ -503,7 +512,11 @@ function resestAfterPieceIsMoved(){
 function movePiece(event){
     
     spotWeWantToMoveTO = event.target.id
+    
     console.log(`The spot you want to move to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
+    // if (spotWeWantToMoveTO == activatedPiece){
+    //     console.log("you clicked on the activated piece", spotWeWantToMoveTO ,activatedPiece )
+    // }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
@@ -539,7 +552,9 @@ let bottomTwoRowsPlus40 = [40,49,51,53,55,56,58,60,62]
 let bottomTwoRowsPlus46 = [46,49,51,53,55,56,58,60,62]
 let topTwoRowsPlus23 = [1,3,5,7,8,10,12,14,23]
 let topTwoRowsPlus17  =[1,3,5,7,8,10,12,14,17]
-let NoJumpsAvaliable 
+let NoJumpsAvaliable
+
+
 function checkForJumps(){
 
     console.log("Currently activatied piece" ,activatedPiece)
