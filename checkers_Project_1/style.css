@@ -59,35 +59,43 @@ border-radius: 10px;
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%; 
-    margin: 5px;
+    margin: 0px;
     background-color:orange;
+    
   }
 .nullPiece{
     background-color: white;
     opacity: 0%;
 }
 .PotentialyUseablePieces{
-    background-color: green;
+    background-color: gray;
 }
 
 .redPiece{
     background-color: red;
+    box-shadow: 5px  5px red;
+    border: solid black;
 }
 .bluePiece{
     background-color: blue;
+    box-shadow: 5px  5px blue;
+    border: solid black;
 }
 .activatedPiece{
   border: solid black;
+  background-color: green;
 }
 .blueKing{
   background-color: gold;
+  box-shadow: 5px  5px gold;
   border: solid blue;
 }
 .redKing{
   background-color: gold;
+  box-shadow: 5px  5px gold;
   border: solid red;
 }
 
