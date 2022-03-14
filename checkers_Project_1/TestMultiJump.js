@@ -677,7 +677,7 @@ function checkForJumps(){
         clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
             clickWeWantToMove.addEventListener("click", movePiece)
         })
-    
+        
         console.log(clickWhereWeWantToMove.length)
         console.log(clickWhereWeWantToMove)
 
@@ -686,6 +686,10 @@ function checkForJumps(){
         NoMovesAvaliablefunc()
         //return false
     }
+    console.log(rightForwardUPJump, leftForwardUPJump , rightForwardDownJump , leftForwardDownJump)
+    if(rightForwardUPJump == 0 && leftForwardUPJump == 0 && rightForwardDownJump == 0 && leftForwardDownJump==0) 
+    {noOpenJumps = true}
+    else{noOpenJumps = false}
 
     
 }
@@ -754,7 +758,7 @@ function resestAfterPieceIsJumpedSingle(){
             
         }
 
-                if (checkedForDoubleJumps == false){
+                if (noOpenJumps == false){
                     clickWhereWeWantToMove.forEach(whereWeWantToMove=>{
                         whereWeWantToMove.removeEventListener("click", movePiece)
                         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
@@ -764,7 +768,7 @@ function resestAfterPieceIsJumpedSingle(){
                 checkForDoubleJumps()
                 }
 
-                else if (checkedForDoubleJumps == true){
+                else if (noOpenJumps == true){
                     checkForKings()
                     pieceCount()
 
@@ -773,7 +777,7 @@ function resestAfterPieceIsJumpedSingle(){
                         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
                     })
                     allPieces[activatedPiece].classList.remove("activatedPiece")
-                    checkedForDoubleJumps = false
+                    noOpenJumps = false
                     winGameFunc()
                 }
 
@@ -792,7 +796,7 @@ function NoMovesAvaliablefunc(){
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
     })
     allPieces[activatedPiece].classList.remove("activatedPiece")
-    checkedForDoubleJumps = false
+    noOpenJumps = false
     winGameFunc()
 }
 
@@ -852,8 +856,8 @@ function checkForDoubleJumps(){
     //console.log("We printed from inside check for double Jumps func activatedPiece",activatedPiece)
     console.log("We printed from inside check for double Jumps func spotWeWantToMoveTO",allPieces[spotWeWantToMoveTO])
     console.log("We printed from inside check for double Jumps func activatedPiece",allPieces[activatedPiece])
-
-    checkedForDoubleJumps = true
+    noOpenJumps = false
+    //checkedForDoubleJumps = true
     checkForJumps()
     //console.log(checkForJumps())
     //return false
@@ -863,8 +867,6 @@ function checkForDoubleJumps(){
 ////////
 //////
 //// functions to shorten code 
-
-
 
 function allPiecesClassContFunc(num, pieceClass){
     return allPieces[parseInt(activatedPiece)+num].classList.contains(pieceClass)
