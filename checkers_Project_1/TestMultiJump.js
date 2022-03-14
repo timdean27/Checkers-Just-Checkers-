@@ -261,13 +261,13 @@ function pieceYouWantToMove(event){
     
 }
 
-// let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
-// TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
+let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
+TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
 
-// function TestRemoveEventButtonTestFunc(){
-//     activatedPiece = ""
-//     resetWithRemainingPeices()
-// }
+function TestRemoveEventButtonTestFunc(){
+    activatedPiece = ""
+    resetWithRemainingPeices()
+}
 
 
 
@@ -824,15 +824,22 @@ function pieceCount(){
 function winGameFunc(){
     
     if (bluePieces.length+blueKings.length == 0){
+        
         console.log("Red Wins")
+        turnTrackerHTML.innerText = "Red Wins!!!"
+        turnTrackerHTML.style.color="red"
         
     } 
-    if (redPieces.length+redKings.length == 0){
+    else if (redPieces.length+redKings.length == 0){
+        
         console.log("Blue Wins")
+        turnTrackerHTML.innerText = "Blue Wins!!!"
+        turnTrackerHTML.style.color="blue"
         
     }
-    
+    else{
     changeWhosTurn()
+    }
 }
 
 
