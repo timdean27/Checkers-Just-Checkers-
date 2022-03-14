@@ -92,7 +92,7 @@ for(let i =0 ; i <= 7 ; i ++){
     }
 }
 
-console.log(allPiecesArray)
+//console.log(allPiecesArray)
 
 //setting up starting positions
 //indentifying all activePieces

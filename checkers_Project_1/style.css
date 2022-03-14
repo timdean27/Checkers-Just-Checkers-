@@ -5,11 +5,24 @@ span{
   padding: 5px;
 
 }
+#StartGameBTN{
+color: black;
+font-size: 25px;
+background-image: linear-gradient(white, orange);
+text-align: center;
+box-shadow: 0px 5px gray;
+border-radius: 10px;
+}
+#StartGameBTN.avtive{
+  transform: translateY(4px);
+  box-shadow: 0px 5px gold;
+}
 
 #chessBoardContainer{
     height: 400px;
     width: 400px;
     border: 3px solid black;
+    box-shadow: 10px 5px 5px black;
 }
 #TurnTracker{
   font-size: 20px;

@@ -92,7 +92,7 @@ for(let i =0 ; i <= 7 ; i ++){
     }
 }
 
-console.log(allPiecesArray)
+//console.log(allPiecesArray)
 
 //setting up starting positions
 //indentifying all activePieces
@@ -205,10 +205,7 @@ addClickeventToPieces()
 
 // porbelm in prior code was when a piece was removed it remaind inside the forEach add event listener even when bluepice class was removed
 // function to remove event listener
-// let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
-// TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
 
-// function TestRemoveEventButtonTestFunc(){removeEventListener()}
 
 function removeEventListenerWhenNotTurn(){
     if(turn === 0){
@@ -245,8 +242,8 @@ function resetWithRemainingPeices(){
     blueKings = document.querySelectorAll(".blueKing")
     redKings = document.querySelectorAll(".redKing")
 
-    console.log("pices with blueKing class run in resetWithRemainingPeices()",blueKings)
-    console.log("pices with redKing class run in resetWithRemainingPeices()",redKings )
+    //console.log("pices with blueKing class run in resetWithRemainingPeices()",blueKings)
+    //console.log("pices with redKing class run in resetWithRemainingPeices()",redKings )
 }
 
 
@@ -254,15 +251,26 @@ function resetWithRemainingPeices(){
 function pieceYouWantToMove(event){
     activatedPiece = event.target.id
     allPieces[activatedPiece].classList.add("activatedPiece")
-    console.log(`Activated Piece ID`,activatedPiece)
+    //console.log(`Activated Piece ID`,activatedPiece)
     console.log(`Activated Piece`,allPieces[activatedPiece])
     //console.log(console.log(`Activated Piece ID+9`,parseInt(activatedPiece)+9))
-    console.log(console.log(`Activated Piece ID-14`,activatedPiece-14))
+    //console.log(console.log(`Activated Piece ID-14`,activatedPiece-14))
     removeEventListenerWhenNotTurn()
     //changeWhosTurn() // this should be added once piece is selected to move to 
     checkForOpenSpotsNoJumps()
     
 }
+
+// let TestRemoveEventButtonTest = document.querySelector(".TestRemoveEvent")
+// TestRemoveEventButtonTest.addEventListener("click", TestRemoveEventButtonTestFunc)
+
+// function TestRemoveEventButtonTestFunc(){
+//     activatedPiece = ""
+//     resetWithRemainingPeices()
+// }
+
+
+
 
 //lets try this again...
 //check avaliable spaces...no jumps..left front right front
@@ -304,7 +312,7 @@ function checkForOpenSpotsNoJumps(){
             {
                 allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
-                console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+                //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
                 console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
                 //return true
             }
@@ -312,7 +320,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                     leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
-                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    //console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
                     console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
                     //return true
                 }
@@ -320,7 +328,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
-                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                    //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
                     console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
                     
                 }
@@ -328,7 +336,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
-                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                    //console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
                     console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
                 } 
         }
@@ -338,7 +346,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
-                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+                    //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
                     console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
                     
                 }
@@ -348,7 +356,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
-                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    //console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
                     console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
                    
                 }
@@ -369,7 +377,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[activatedPiece-7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceUP = allPieces[activatedPiece-7].id
-                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
+                    //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceUP)
                     console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceUP])
                     
                 }
@@ -377,7 +385,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[activatedPiece-9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceUp = allPieces[activatedPiece-9].id
-                    console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
+                    //console.log(`The piece to the Forward left is open`,leftForwardOpenPieceUp)
                     console.log(`The piece to the Forward left is open`,allPieces[leftForwardOpenPieceUp])
                     
                 }
@@ -385,7 +393,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
                 rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
-                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                    //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
                     console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
                     
                 }
@@ -393,7 +401,7 @@ function checkForOpenSpotsNoJumps(){
                 {
                     allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
                 leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
-                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                    //console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
                     console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
                 
                 }
@@ -404,8 +412,8 @@ function checkForOpenSpotsNoJumps(){
             if(allPiecesClassContFunc(7 ,"hidden"))
                 {
                     allPieces[parseInt(activatedPiece)+7].classList.add("PieceYouCanMoveTo")
-                    rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
-                    console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
+                rightForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+7].id
+                    //console.log(`The piece to the Forward Right is open `,rightForwardOpenPieceDown)
                     console.log(`The piece to the Forward Right is open `,allPieces[rightForwardOpenPieceDown])
                     //return true
             }
@@ -414,8 +422,8 @@ function checkForOpenSpotsNoJumps(){
             if(parseInt(activatedPiece) != 55 && allPiecesClassContFunc(9 ,"hidden") )
                 {
                     allPieces[parseInt(activatedPiece)+9].classList.add("PieceYouCanMoveTo")
-                    leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
-                    console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
+                leftForwardOpenPieceDown = allPieces[parseInt(activatedPiece)+9].id
+                    //console.log(`The piece Down and left is open`,leftForwardOpenPieceDown)
                     console.log(`The piece Down and left is open`,allPieces[leftForwardOpenPieceDown])
                     //return true
                 }
@@ -678,8 +686,8 @@ function checkForJumps(){
             clickWeWantToMove.addEventListener("click", movePiece)
         })
         
-        console.log(clickWhereWeWantToMove.length)
-        console.log(clickWhereWeWantToMove)
+        //console.log(clickWhereWeWantToMove.length)
+        //console.log(clickWhereWeWantToMove)
 
     if (clickWhereWeWantToMove.length == 0){
         console.log("No Jumps avaliable")
@@ -817,15 +825,11 @@ function winGameFunc(){
     
     if (bluePieces.length+blueKings.length == 0){
         console.log("Red Wins")
-        // document.querySelector("PopBox").style.border = "2px, solid , red"
-        // document.querySelector("winText").innerText ="Red Wins"
-        // document.querySelector("winText").style.color="red"
+        
     } 
     if (redPieces.length+redKings.length == 0){
         console.log("Blue Wins")
-        // document.querySelector("PopBox").style.border = "2px, solid , blue"
-        // document.querySelector("winText").innerText ="Blue Wins"
-        // document.querySelector("winText").style.color="blue"
+        
     }
     
     changeWhosTurn()
