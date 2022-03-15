@@ -204,7 +204,7 @@ turnTrackerHTML.innerText = "Chose a Color"
 //     changeWhosTurn()
 // }
 function changeWhosTurn(){
-    pieceWasMoced = false
+   
     if(turn == 0){
         turnTrackerHTML.innerText = "Turn Tracker: Red"
         turnTrackerHTML.style.color="red"
@@ -470,7 +470,6 @@ function checkForOpenSpotsNoJumps(){
 //function to clear and reset classes after a piece is moved
 // this is only for single movements forward going to make seprate function for jumps
 function resestAfterPieceIsMoved(){
-    pieceWasMoced = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
     if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
@@ -528,7 +527,6 @@ function resestAfterPieceIsMoved(){
     winGameFunc()
 }
 
-let pieceWasMoced = false
 
 //Write function to move to identified pieces // no jumps yet
 function movePiece(event){
@@ -782,8 +780,6 @@ function singleJumpMovePiece(){
 //reset after piece is jumped
 // we need to find what piece is being jumped first...
 function resestAfterPieceIsJumpedSingle(){
-
-    pieceWasMoced = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
 
@@ -836,7 +832,7 @@ function resestAfterPieceIsJumpedSingle(){
 }
 
 function NoMovesAvaliablefunc(){
-    if (pieceWasMoced == true){
+    //NoJumpsAvaliable = true
     //console.log(clickWhereWeWantToMove)
     checkForKings()
     pieceCount()
@@ -848,11 +844,6 @@ function NoMovesAvaliablefunc(){
     allPieces[activatedPiece].classList.remove("activatedPiece")
     noOpenJumps = false
     winGameFunc()
-    }
-    else{
-        console.log("piece cant be mvoed")
-    }
-
 }
 
 // keep count of pieces removed and remaining / should just be redPiece and bluePiece .length at each turn change
