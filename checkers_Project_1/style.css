@@ -5,18 +5,32 @@ span{
   padding: 5px;
 
 }
-#StartGameBTN{
+#BlueStartGameBTN{
 color: black;
 font-size: 25px;
-background-image: linear-gradient(white, orange);
+background-image: linear-gradient(white,blue);
 text-align: center;
 box-shadow: 0px 5px gray;
 border-radius: 10px;
 }
-#StartGameBTN.avtive{
+#BlueStartGameBTN.avtive{
   transform: translateY(4px);
   box-shadow: 0px 5px gold;
 }
+
+
+#RedStartGameBTN{
+  color: black;
+  font-size: 25px;
+  background-image: linear-gradient(white,red);
+  text-align: center;
+  box-shadow: 0px 5px gray;
+  border-radius: 10px;
+  }
+  #RedStartGameBTN.avtive{
+    transform: translateY(4px);
+    box-shadow: 0px 5px gold;
+  }
 
 #chessBoardContainer{
     height: 400px;
