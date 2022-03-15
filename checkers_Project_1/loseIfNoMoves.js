@@ -204,7 +204,7 @@ turnTrackerHTML.innerText = "Chose a Color"
 //     changeWhosTurn()
 // }
 function changeWhosTurn(){
-    pieceWasMoced = false
+    pieceWasMoved = false
     if(turn == 0){
         turnTrackerHTML.innerText = "Turn Tracker: Red"
         turnTrackerHTML.style.color="red"
@@ -470,7 +470,7 @@ function checkForOpenSpotsNoJumps(){
 //function to clear and reset classes after a piece is moved
 // this is only for single movements forward going to make seprate function for jumps
 function resestAfterPieceIsMoved(){
-    pieceWasMoced = true
+    pieceWasMoved = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
     if(turn == 0 && allPieces[activatedPiece].classList.contains("bluePiece")){
@@ -528,7 +528,7 @@ function resestAfterPieceIsMoved(){
     winGameFunc()
 }
 
-let pieceWasMoced = false
+let pieceWasMoved = false
 
 //Write function to move to identified pieces // no jumps yet
 function movePiece(event){
@@ -750,7 +750,7 @@ function singleJumpMovePiece(){
         console.log(`You Want to move to spot${rightForwardUPJump}`, allPieces[rightForwardUPJump])
         pieceWeSingleJumped = allPieces[activatedPiece-7].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
-        
+        pieceHoder()
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
@@ -758,7 +758,7 @@ function singleJumpMovePiece(){
         console.log(`You Want to move to spot${leftForwardUPJump}`, allPieces[leftForwardUPJump])
         pieceWeSingleJumped = allPieces[activatedPiece-9].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
-        
+        pieceHoder()
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
@@ -766,7 +766,7 @@ function singleJumpMovePiece(){
         console.log(`You Want to move to spot${rightForwardDownJump}`, allPieces[rightForwardDownJump])
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+7].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
-        
+        pieceHoder()
         resestAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
@@ -774,16 +774,18 @@ function singleJumpMovePiece(){
         console.log(`You Want to move to spot${leftForwardDownJump}`, allPieces[leftForwardDownJump])
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+9].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
-        
+        pieceHoder()
         resestAfterPieceIsJumpedSingle()
     }
+
+    
 }
 
 //reset after piece is jumped
 // we need to find what piece is being jumped first...
 function resestAfterPieceIsJumpedSingle(){
 
-    pieceWasMoced = true
+    pieceWasMoved = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
 
@@ -832,11 +834,12 @@ function resestAfterPieceIsJumpedSingle(){
                 }
 
         pieceCount()
+        
            
 }
 
 function NoMovesAvaliablefunc(){
-    if (pieceWasMoced == true){
+    if (pieceWasMoved == true){
     //console.log(clickWhereWeWantToMove)
     checkForKings()
     pieceCount()
@@ -850,7 +853,7 @@ function NoMovesAvaliablefunc(){
     winGameFunc()
     }
     else{
-        console.log("piece cant be mvoed")
+        console.log("piece cant be moved")
     }
 
 }
@@ -864,6 +867,7 @@ function pieceCount(){
     redKings = document.querySelectorAll(".redKing")
     document.getElementById("BluePieceCount").innerText = `Blue Piece Count: ${bluePieces.length+blueKings.length}`
     document.getElementById("RedPieceCount").innerText = `Red Piece Count: ${redPieces.length+redKings.length}`
+    
 }
 
 //Need win condition for when all pieces of a color are removed
@@ -920,6 +924,27 @@ function checkForDoubleJumps(){
     //console.log(checkForJumps())
     //return false
 }
+
+/// creating piece holders
+redPieceHolder = document.getElementById("RedPieceHolder")
+bluePieceHolder= document.getElementById("BluePieceHolder")
+
+function pieceHoder(){
+        if(turn == 0){
+            let makeTakenPiece = document.createElement('div')
+                makeTakenPiece.classList.add('redTakenPieces')
+                redPieceHolder.appendChild(makeTakenPiece)
+            
+        }
+
+        else if (turn == 1){
+            let makeTakenPiece = document.createElement('div')
+                makeTakenPiece.classList.add('blueTakenPieces')
+                bluePieceHolder.appendChild(makeTakenPiece)
+  
+        }    
+                  
+    }
 
 
 ////////

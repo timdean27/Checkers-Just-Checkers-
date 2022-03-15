@@ -8,7 +8,7 @@ span{
 #BlueStartGameBTN{
 color: black;
 font-size: 25px;
-background-image: linear-gradient(white,blue);
+background-image: linear-gradient(white,CornflowerBlue);
 text-align: center;
 box-shadow: 0px 5px gray;
 border-radius: 10px;
@@ -16,6 +16,13 @@ border-radius: 10px;
 #BlueStartGameBTN.avtive{
   transform: translateY(4px);
   box-shadow: 0px 5px gold;
+}
+.Pieceholder{
+  height: 50px;
+    width: 700px;
+    border: 3px solid black;
+    background-color: #D8B589;
+    box-shadow: 10px 5px 0px brown;
 }
 
 
@@ -58,7 +65,6 @@ border-radius: 10px;
     background-color: aqua;
     font-size: 15px;
     
-    
   }
 .darkSQaures{
     background-color: brown;
@@ -94,8 +100,8 @@ border-radius: 10px;
     border: solid black;
 }
 .bluePiece{
-    background-color: blue;
-    box-shadow: 5px  5px blue;
+    background-color: CornflowerBlue;
+    box-shadow: 5px  5px CornflowerBlue;
     border: solid black;
 }
 .activatedPiece{
@@ -105,12 +111,38 @@ border-radius: 10px;
 .blueKing{
   background-color: gold;
   box-shadow: 5px  5px gold;
-  border: solid blue;
+  border: solid CornflowerBlue;
 }
 .redKing{
   background-color: gold;
   box-shadow: 5px  5px gold;
   border: solid red;
+}
+.redTakenPieces{
+  display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    margin: 0px;
+  background-color: red;
+  box-shadow: 5px  5px red;
+  border: solid black;
+}
+.blueTakenPieces{
+  display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    margin: 0px;
+  background-color: CornflowerBlue;
+  box-shadow: 5px  5px CornflowerBlue;
+  border: solid black;
 }
 
   .hidden{

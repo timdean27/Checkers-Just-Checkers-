@@ -10,24 +10,31 @@
     <header>
         <h1>Just Checkers</h1>
     </header>
-    
-    <div id = "RedPieceCount">Red Piece Count: Starts at 12 </div>
-    <div id = "BluePieceCount">Blue Piece Count:Starts at 12 </div>
-    <div id = "TurnTracker">Turn Tracker: </div>
-    
-    <div id = "TopRow">0 1 2 3 4 5 6 7 </div>
+    <div class="top-page">
+        <div id = "RedPieceCount">Red Piece Count: Starts at 12 </div>
+        <div id = "BluePieceCount">Blue Piece Count:Starts at 12 </div>
+        <div id = "TurnTracker">Turn Tracker: </div>
+    </div>
+
+    <!-- <div id = "TopRow">0 1 2 3 4 5 6 7 </div> -->
 
     <div>
-    <div id = "SideColumn">0 1 2 3 4 5 6 7 </div>
-    <div id = "chessBoardContainer"></div>
+        <!-- <div id = "SideColumn">0 1 2 3 4 5 6 7 </div> -->
+        <div id = "chessBoardContainer"></div>
     </div>
-    
-    
 
+    <div class="Button-div">
+        <button id = "BlueStartGameBTN"></buttonclass>Start Game as Blue</button>
+        <button id = "RedStartGameBTN"></buttonclass>Start Game as Red</button>
+    </div>
+    <div class="top-page">
+        <div class ="Pieceholder" id = "RedPieceHolder"></div>
+        <div class ="Pieceholder" id = "BluePieceHolder"></div>
+        
+    </div>
     <!-- <button class = "TestRemoveEvent"></buttonclass>TestRemoveEvent</button> -->
     <!-- <button class = "ChangeTurn"></buttonclass>ChangeTurn</button> -->
-    <button id = "BlueStartGameBTN"></buttonclass>Start Game as Blue</button>
-    <button id = "RedStartGameBTN"></buttonclass>Start Game as Red</button>
+    
     
 </body>
 </html>
