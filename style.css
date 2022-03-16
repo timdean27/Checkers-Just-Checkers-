@@ -1,0 +1,168 @@
+span{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+
+}
+#RestartGameBTN{
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 10px;
+  }
+#BlueStartGameBTN{
+color: black;
+font-size: 25px;
+background-image: linear-gradient(white,CornflowerBlue);
+text-align: center;
+box-shadow: 0px 5px gray;
+border-radius: 10px;
+}
+#BlueStartGameBTN.avtive{
+  transform: translateY(4px);
+  box-shadow: 0px 5px gold;
+}
+.Pieceholder{
+  height: 50px;
+    width: 700px;
+    border: 3px solid black;
+    background-color: #D8B589;
+    box-shadow: 10px 5px 0px brown;
+}
+
+
+#RedStartGameBTN{
+  color: black;
+  font-size: 25px;
+  background-image: linear-gradient(white,red);
+  text-align: center;
+  box-shadow: 0px 5px gray;
+  border-radius: 10px;
+  }
+  #RedStartGameBTN.avtive{
+    transform: translateY(4px);
+    box-shadow: 0px 5px gold;
+  }
+
+#chessBoardContainer{
+    height: 400px;
+    width: 400px;
+    border: 3px solid black;
+    box-shadow: 10px 5px 5px black;
+}
+#TurnTracker{
+  font-size: 20px;
+}
+#SideColumn{
+    letter-spacing: 20px;
+    display: block;
+    flex-direction: column;
+
+}
+#TopRow{
+  letter-spacing: 21.5px;
+}
+.square {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    background-color: aqua;
+    font-size: 15px;
+    
+  }
+.darkSQaures{
+    background-color: brown;
+    /* visibility: hidden  */
+}
+.lightSQaures{
+    background-color: burlywood;
+    /* visibility: hidden  */
+}
+  .pieces{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    margin: 0px;
+    background-color:orange;
+    
+  }
+.nullPiece{
+    background-color: white;
+    opacity: 0%;
+}
+.PotentialyUseablePieces{
+    background-color: gray;
+}
+
+.redPiece{
+    background-color: red;
+    box-shadow: 5px  5px red;
+    border: solid black;
+}
+.bluePiece{
+    background-color: CornflowerBlue;
+    box-shadow: 5px  5px CornflowerBlue;
+    border: solid black;
+}
+.activatedPiece{
+  border: solid black;
+  background-color: green;
+}
+.blueKing{
+  background-color: gold;
+  box-shadow: 5px  5px gold;
+  border: solid CornflowerBlue;
+}
+.redKing{
+  background-color: gold;
+  box-shadow: 5px  5px gold;
+  border: solid red;
+}
+.redTakenPieceON{
+  float:left;
+  display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    margin: 0px;
+  background-color: red;
+  box-shadow: 5px  5px red;
+  border: solid black;
+}
+.blueTakenPieceON{
+  float:left;
+  display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    margin: 0px;
+  background-color: CornflowerBlue;
+  box-shadow: 5px  5px CornflowerBlue;
+  border: solid black;
+}
+
+  .hidden{
+    /* visibility: hidden */
+    background-color: yellow;
+    opacity: 0%;
+  }
+  .PieceYouCanMoveTo{
+    background-color: purple;
+    border: solid black;
+    box-shadow: 5px  5px purple;
+    opacity: 100%;
+  }
+
+ 
