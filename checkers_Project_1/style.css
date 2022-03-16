@@ -119,6 +119,7 @@ border-radius: 10px;
   border: solid red;
 }
 .redTakenPieces{
+  float:left;
   display: flex;
     position: relative;
     justify-content: center;
@@ -132,6 +133,7 @@ border-radius: 10px;
   border: solid black;
 }
 .blueTakenPieces{
+  float:left;
   display: flex;
     position: relative;
     justify-content: center;
