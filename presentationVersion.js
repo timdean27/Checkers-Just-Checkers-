@@ -160,6 +160,15 @@ function resestGame(){
     document.getElementById("BluePieceCount").innerText = `Blue Piece Count: 12`
     document.getElementById("RedPieceCount").innerText = `Red Piece Count: 12`
     
+    rightForwardOpenPieceUP = 0
+    leftForwardOpenPieceUp = 0
+    rightForwardOpenPieceDown = 0
+    leftForwardOpenPieceDown = 0
+    rightForwardUPJump = 0
+    leftForwardUPJump = 0
+    rightForwardDownJump = 0
+    leftForwardDownJump= 0
+    spotWeWantToMoveTO = 0
     makeAllGamePices()
     TheWholegame()
  
