@@ -118,7 +118,7 @@ border-radius: 10px;
   box-shadow: 5px  5px gold;
   border: solid red;
 }
-.redTakenPieces{
+.redTakenPieceON{
   float:left;
   display: flex;
     position: relative;
@@ -132,7 +132,7 @@ border-radius: 10px;
   box-shadow: 5px  5px red;
   border: solid black;
 }
-.blueTakenPieces{
+.blueTakenPieceON{
   float:left;
   display: flex;
     position: relative;

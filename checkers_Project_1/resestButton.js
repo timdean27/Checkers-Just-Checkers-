@@ -52,17 +52,23 @@ for(let i =0 ; i <= 7 ; i ++){
 //adding pieces to squares
 //adding pieces to squares
 //adding pieces to squares
-
-
+    let allnullPieces
+    let makePiece
+    let allPieces
+    let makeTakenPiecered
+    let makeTakenPieceblue
+    let redTakenPiece
+    let blueTakenPiece
+function makeAllGamePices(){
 for(let i =0 ; i <= 64-1 ; i ++){
-    let makePiece = document.createElement('div')
+    makePiece = document.createElement('div')
         makePiece.classList.add('pieces')
         makePiece.setAttribute("id",`${i}`)
         makePiece.innerText= `${i}`
         
         allSquares[i].appendChild(makePiece)
 }
-let allPieces = document.querySelectorAll('.pieces')
+allPieces = document.querySelectorAll('.pieces')
 
 let b = 0
 for(let i =0 ; i <= 7 ; i ++){
@@ -90,6 +96,7 @@ for(let i =0 ; i <= 7 ; i ++){
         }
         b++
     }
+    
 }
 
 //console.log(allPiecesArray)
@@ -118,19 +125,14 @@ for(i =0; i <= allPieces.length-1 ; i ++){
         allPieces[i].classList.add("hidden")
     }
 }
-let allnullPieces = document.querySelectorAll(`.nullPiece`)
+allnullPieces = document.querySelectorAll(`.nullPiece`)
 allnullPieces.forEach(nullPiece=>{
     nullPiece.classList.remove("hidden")
     //nullPiece.classList.remove("pieceOFF")
+    
 })
+ 
 
-
-
-
-let makeTakenPiecered
-    let makeTakenPieceblue
-    let redTakenPiece
-    let blueTakenPiece
 redPieceHolder = document.getElementById("RedPieceHolder")
 for(i =0; i < 12 ; i ++){
     makeTakenPiecered = document.createElement('div')
@@ -148,42 +150,97 @@ for(i =0; i < 12 ; i ++){
 redTakenPiece = document.querySelectorAll('.redTakenPieceOff')
 blueTakenPiece = document.querySelectorAll('.blueTakenPieceOff')
 console.log(redTakenPiece[1])
+}
 
 
 
 
-//console.log(allPieces[1])
+makeAllGamePices()
+TheWholegame()
+////ResetGame 
+let restartGameBTN = document.getElementById("RestartGameBTN")
+
+restartGameBTN.addEventListener("click", resestGame)
+function resestGame(){
+    console.log("Resest Game")
+    restartGameBTN.style.background = "red"
+    
+    allPieces.forEach(removePiece =>{
+        removePiece.remove()
+    })
+    redTakenPiece.forEach(removeRedTakenPiece  =>{
+        removeRedTakenPiece.remove()
+    })
+    blueTakenPiece.forEach(removeBlueTakenPiece  =>{
+        removeBlueTakenPiece.remove()
+    })
+
+    
+    makeAllGamePices()
+    TheWholegame()
+ 
+}
+
+// let startGameBTN = document.getElementById("startGameBTN")
+// startGameBTN.addEventListener("click", startGame)
+// function startGame(){
+//     console.log("start Game")
+//     makeAllGamePices()
+//     game()
+ 
+// }
+
+
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
-
+function TheWholegame(){
+    console.log(allPieces[1])
+    console.log(redTakenPiece[1])
 //Add addEventListener depending on turn
-let bluePieces = document.querySelectorAll(".bluePiece")
+let bluePieces
 //bluePieces.forEach(bluePiece=>{console.log(bluePiece)})
-let redPieces = document.querySelectorAll(".redPiece")
+let redPieces
 //redPieces.forEach(redPiece=>{console.log(redPiece)})
-blueKings = document.querySelectorAll(".blueKing")
-redKings = document.querySelectorAll(".redKing")
+let blueKings
+let redKings
 
 let turn
 
 document.getElementById("BlueStartGameBTN").addEventListener("click", startGameAsBlueFunc)
 function startGameAsBlueFunc(){
+    //makeAllGamePices()
     turn = 0
     console.log("turn check 1:",turn)
     turnTrackerHTML.innerText = "Blue Starts"
     turnTrackerHTML.style.color="blue"
+    //makeAllGamePices()
+    bluePieces = document.querySelectorAll(".bluePiece")
+    redPieces = document.querySelectorAll(".redPiece")
+    blueKings = document.querySelectorAll(".redKing")
+    redKings = document.querySelectorAll(".blueKing")
+    
 addClickeventToPieces()
 }
 document.getElementById("RedStartGameBTN").addEventListener("click", startGameAsRedFunc)
 function startGameAsRedFunc(){
+    //makeAllGamePices()
     turn = 1
     console.log("turn check 1:",turn)
     turnTrackerHTML.innerText = "Red Starts"
     turnTrackerHTML.style.color="red"
+    //makeAllGamePices()
+    bluePieces = document.querySelectorAll(".bluePiece")
+    redPieces = document.querySelectorAll(".redPiece")
+    blueKings = document.querySelectorAll(".redKing")
+    redKings = document.querySelectorAll(".blueKing")
+    
 addClickeventToPieces()
 }
+
+
+
 
 
 
@@ -220,6 +277,7 @@ function addClickeventToPieces(){
     }
 
 }
+
 
 ////////////////////
 // change the players turn function
@@ -323,15 +381,6 @@ function DoubleClickedActivatedPiece(){
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
     })
-    rightForwardOpenPieceUP = 0
-    leftForwardOpenPieceUp = 0
-    rightForwardOpenPieceDown = 0
-    leftForwardOpenPieceDown = 0
-    rightForwardUPJump = 0
-    leftForwardUPJump = 0
-    rightForwardDownJump = 0
-    leftForwardDownJump= 0
-    spotWeWantToMoveTO = 0
 
     addClickeventToPieces()
 }
@@ -554,15 +603,15 @@ function resestAfterPieceIsMoved(){
 
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
-    // rightForwardOpenPieceUP = 0
-    // leftForwardOpenPieceUp = 0
-    // rightForwardOpenPieceDown = 0
-    // leftForwardOpenPieceDown = 0
-    // rightForwardUPJump = 0
-    // leftForwardUPJump = 0
-    // rightForwardDownJump = 0
-    // leftForwardDownJump= 0
-    // spotWeWantToMoveTO = 0
+    rightForwardOpenPieceUP = 0
+    leftForwardOpenPieceUp = 0
+    rightForwardOpenPieceDown = 0
+    leftForwardOpenPieceDown = 0
+    rightForwardUPJump = 0
+    leftForwardUPJump = 0
+    rightForwardDownJump = 0
+    leftForwardDownJump= 0
+    spotWeWantToMoveTO = 0
     winGameFunc()
 }
 
@@ -570,11 +619,14 @@ let pieceWasMoved = false
 
 //Write function to move to identified pieces // no jumps yet
 function movePiece(event){
-    spotWeWantToMoveTO = event.target.id
-
-    console.log(`The spot you want to move to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
     
-
+    spotWeWantToMoveTO = event.target.id
+    
+    console.log(`The spot you want to move to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
+    // if (spotWeWantToMoveTO == activatedPiece){
+    //     console.log("you clicked on the activated piece", spotWeWantToMoveTO ,activatedPiece )
+    // }
+    //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
         
@@ -598,7 +650,6 @@ function movePiece(event){
         
         resestAfterPieceIsMoved()
     }
-
     singleJumpMovePiece()
 }
 
@@ -753,25 +804,24 @@ function checkForJumps(){
                 }
         }
 
-        console.log(allPieces[leftForwardOpenPieceUp])
-    console.log(rightForwardUPJump, leftForwardUPJump , rightForwardDownJump , leftForwardDownJump)
-    if((rightForwardUPJump == null && leftForwardUPJump == null && rightForwardDownJump == null && leftForwardDownJump== null)||(rightForwardUPJump == 0 && leftForwardUPJump == 0 && rightForwardDownJump == 0 && leftForwardDownJump== 0)) 
-    {noOpenJumps = true
-        
-    }
-    else{noOpenJumps = false
-        mustJumpFunc()
-    }
 
-    clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
+        clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
         clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
             clickWeWantToMove.addEventListener("click", movePiece)
         })
+        
+        //console.log(clickWhereWeWantToMove.length)
+        //console.log(clickWhereWeWantToMove)
+
     if (clickWhereWeWantToMove.length == 0){
-            console.log("No Jumps avaliable")
-            NoMovesAvaliablefunc()
-            //return false
+        console.log("No Jumps avaliable")
+        NoMovesAvaliablefunc()
+        //return false
     }
+    console.log(rightForwardUPJump, leftForwardUPJump , rightForwardDownJump , leftForwardDownJump)
+    if(rightForwardUPJump == 0 && leftForwardUPJump == 0 && rightForwardDownJump == 0 && leftForwardDownJump==0) 
+    {noOpenJumps = true}
+    else{noOpenJumps = false}
 
     
 }
@@ -867,10 +917,8 @@ function resestAfterPieceIsJumpedSingle(){
                     })
                     allPieces[activatedPiece].classList.remove("activatedPiece")
                     noOpenJumps = false
-                    
                     winGameFunc()
                 }
-                
 
         pieceCount()
         
@@ -928,15 +976,6 @@ function winGameFunc(){
         
     }
     else{
-                    rightForwardOpenPieceUP = 0
-                    leftForwardOpenPieceUp = 0
-                    rightForwardOpenPieceDown = 0
-                    leftForwardOpenPieceDown = 0
-                    rightForwardUPJump = 0
-                    leftForwardUPJump = 0
-                    rightForwardDownJump = 0
-                    leftForwardDownJump= 0
-                    spotWeWantToMoveTO = 0
     changeWhosTurn()
     }
 }
@@ -975,42 +1014,21 @@ function checkForDoubleJumps(){
 
 /// creating piece holders
 
-
 function pieceHoder(){
-    if(turn == 0){
-            redTakenPiece[redPieces.length+redKings.length-1].classList.add('redTakenPieceON')
+        if(turn == 0){
+            redTakenPiece
+            
+                redTakenPiece[redPieces.length+redKings.length-1].classList.add('redTakenPieceON')
+            
+        }
+        else if (turn == 1){
+
+            blueTakenPiece[bluePieces.length+blueKings.length-1].classList.add('blueTakenPieceON')
+
+        }    
+             
     }
-    else if (turn == 1){
-        blueTakenPiece[bluePieces.length+blueKings.length-1].classList.add('blueTakenPieceON')
-    }           
-}
-
-    ///////function to make is so you must take jumps
-
-    function mustJumpFunc(){
-        
-        console.log(allPieces[parseInt(rightForwardOpenPieceUP)])
-        console.log(allPieces[parseInt(leftForwardOpenPieceUp)])
-        console.log(rightForwardOpenPieceUP)
-        console.log(leftForwardOpenPieceUp)
-        console.log(rightForwardOpenPieceDown)
-        console.log(leftForwardOpenPieceDown)
-        if((rightForwardOpenPieceUP != null || rightForwardOpenPieceUP != 0)  && allPieces[parseInt(rightForwardOpenPieceUP)].classList.contains("PieceYouCanMoveTo")){
-        allPieces[parseInt(rightForwardOpenPieceUP)].classList.remove("PieceYouCanMoveTo")
-        }
-        if((leftForwardOpenPieceUp != null || leftForwardOpenPieceUp != 0) &&allPieces[parseInt(leftForwardOpenPieceUp)].classList.contains("PieceYouCanMoveTo")){
-            allPieces[parseInt(leftForwardOpenPieceUp)].classList.remove("PieceYouCanMoveTo")
-        }
-        if((rightForwardOpenPieceDown != null || rightForwardOpenPieceDown!= 0) &&allPieces[parseInt(rightForwardOpenPieceDown)].classList.contains("PieceYouCanMoveTo")){
-            allPieces[parseInt(rightForwardOpenPieceDown)].classList.remove("PieceYouCanMoveTo")
-        }
-        if((leftForwardOpenPieceDown != null|| rightForwardOpenPieceDown!= 0)  && allPieces[parseInt(leftForwardOpenPieceDown)].classList.contains("PieceYouCanMoveTo")){
-             allPieces[parseInt(leftForwardOpenPieceDown)].classList.remove("PieceYouCanMoveTo")
-        } 
-
-    }
-
-
+    
 
 ////////
 //////
@@ -1036,4 +1054,5 @@ console.log(allPieces[spotWeWantToMoveTO])
 allPieces[activatedPiece].classList.remove(classWeAre)
 allPieces[activatedPiece].classList.remove("activatedPiece")
 allPieces[activatedPiece].classList.add("hidden")
+}
 }

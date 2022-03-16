@@ -294,6 +294,15 @@ function DoubleClickedActivatedPiece(){
         whereWeWantToMove.removeEventListener("click", movePiece)
         whereWeWantToMove.classList.remove("PieceYouCanMoveTo")
     })
+    rightForwardOpenPieceUP = 0
+    leftForwardOpenPieceUp = 0
+    rightForwardOpenPieceDown = 0
+    leftForwardOpenPieceDown = 0
+    rightForwardUPJump = 0
+    leftForwardUPJump = 0
+    rightForwardDownJump = 0
+    leftForwardDownJump= 0
+    spotWeWantToMoveTO = 0
 
     addClickeventToPieces()
 }
@@ -516,15 +525,15 @@ function resestAfterPieceIsMoved(){
 
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].classList.add("hidden")
-    rightForwardOpenPieceUP = 0
-    leftForwardOpenPieceUp = 0
-    rightForwardOpenPieceDown = 0
-    leftForwardOpenPieceDown = 0
-    rightForwardUPJump = 0
-    leftForwardUPJump = 0
-    rightForwardDownJump = 0
-    leftForwardDownJump= 0
-    spotWeWantToMoveTO = 0
+    // rightForwardOpenPieceUP = 0
+    // leftForwardOpenPieceUp = 0
+    // rightForwardOpenPieceDown = 0
+    // leftForwardOpenPieceDown = 0
+    // rightForwardUPJump = 0
+    // leftForwardUPJump = 0
+    // rightForwardDownJump = 0
+    // leftForwardDownJump= 0
+    // spotWeWantToMoveTO = 0
     winGameFunc()
 }
 
@@ -532,14 +541,11 @@ let pieceWasMoved = false
 
 //Write function to move to identified pieces // no jumps yet
 function movePiece(event){
-    
     spotWeWantToMoveTO = event.target.id
-    
+
     console.log(`The spot you want to move to is ${spotWeWantToMoveTO}`,allPieces[spotWeWantToMoveTO])
-    // if (spotWeWantToMoveTO == activatedPiece){
-    //     console.log("you clicked on the activated piece", spotWeWantToMoveTO ,activatedPiece )
-    // }
-    //move to rightForwardOpenPieceUP
+    
+
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
         
@@ -563,6 +569,7 @@ function movePiece(event){
         
         resestAfterPieceIsMoved()
     }
+
     singleJumpMovePiece()
 }
 
@@ -717,24 +724,25 @@ function checkForJumps(){
                 }
         }
 
+        console.log(allPieces[leftForwardOpenPieceUp])
+    console.log(rightForwardUPJump, leftForwardUPJump , rightForwardDownJump , leftForwardDownJump)
+    if((rightForwardUPJump == null && leftForwardUPJump == null && rightForwardDownJump == null && leftForwardDownJump== null)||(rightForwardUPJump == 0 && leftForwardUPJump == 0 && rightForwardDownJump == 0 && leftForwardDownJump== 0)) 
+    {noOpenJumps = true
+        
+    }
+    else{noOpenJumps = false
+        mustJumpFunc()
+    }
 
-        clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
+    clickWhereWeWantToMove = document.querySelectorAll(".PieceYouCanMoveTo")
         clickWhereWeWantToMove.forEach(clickWeWantToMove=>{
             clickWeWantToMove.addEventListener("click", movePiece)
         })
-        
-        //console.log(clickWhereWeWantToMove.length)
-        //console.log(clickWhereWeWantToMove)
-
     if (clickWhereWeWantToMove.length == 0){
-        console.log("No Jumps avaliable")
-        NoMovesAvaliablefunc()
-        //return false
+            console.log("No Jumps avaliable")
+            NoMovesAvaliablefunc()
+            //return false
     }
-    console.log(rightForwardUPJump, leftForwardUPJump , rightForwardDownJump , leftForwardDownJump)
-    if(rightForwardUPJump == 0 && leftForwardUPJump == 0 && rightForwardDownJump == 0 && leftForwardDownJump==0) 
-    {noOpenJumps = true}
-    else{noOpenJumps = false}
 
     
 }
@@ -830,8 +838,10 @@ function resestAfterPieceIsJumpedSingle(){
                     })
                     allPieces[activatedPiece].classList.remove("activatedPiece")
                     noOpenJumps = false
+                    
                     winGameFunc()
                 }
+                
 
         pieceCount()
         
@@ -889,6 +899,15 @@ function winGameFunc(){
         
     }
     else{
+                    rightForwardOpenPieceUP = 0
+                    leftForwardOpenPieceUp = 0
+                    rightForwardOpenPieceDown = 0
+                    leftForwardOpenPieceDown = 0
+                    rightForwardUPJump = 0
+                    leftForwardUPJump = 0
+                    rightForwardDownJump = 0
+                    leftForwardDownJump= 0
+                    spotWeWantToMoveTO = 0
     changeWhosTurn()
     }
 }
@@ -945,6 +964,33 @@ function pieceHoder(){
         }    
                   
     }
+
+
+    ///////function to make is so you must take jumps
+
+    function mustJumpFunc(){
+        
+        // console.log(allPieces[parseInt(rightForwardOpenPieceUP)])
+        // console.log(allPieces[parseInt(leftForwardOpenPieceUp)])
+        // console.log(rightForwardOpenPieceUP)
+        // console.log(leftForwardOpenPieceUp)
+        // console.log(rightForwardOpenPieceDown)
+        // console.log(leftForwardOpenPieceDown)
+        if((rightForwardOpenPieceUP != null || rightForwardOpenPieceUP != 0)  && allPieces[parseInt(rightForwardOpenPieceUP)].classList.contains("PieceYouCanMoveTo")){
+        allPieces[parseInt(rightForwardOpenPieceUP)].classList.remove("PieceYouCanMoveTo")
+        }
+        if((leftForwardOpenPieceUp != null || leftForwardOpenPieceUp != 0) &&allPieces[parseInt(leftForwardOpenPieceUp)].classList.contains("PieceYouCanMoveTo")){
+            allPieces[parseInt(leftForwardOpenPieceUp)].classList.remove("PieceYouCanMoveTo")
+        }
+        if((rightForwardOpenPieceDown != null || rightForwardOpenPieceDown!= 0) &&allPieces[parseInt(rightForwardOpenPieceDown)].classList.contains("PieceYouCanMoveTo")){
+            allPieces[parseInt(rightForwardOpenPieceDown)].classList.remove("PieceYouCanMoveTo")
+        }
+        if((leftForwardOpenPieceDown != null|| rightForwardOpenPieceDown!= 0)  && allPieces[parseInt(leftForwardOpenPieceDown)].classList.contains("PieceYouCanMoveTo")){
+             allPieces[parseInt(leftForwardOpenPieceDown)].classList.remove("PieceYouCanMoveTo")
+        } 
+
+    }
+
 
 
 ////////
