@@ -149,15 +149,14 @@ for(i =0; i < 12 ; i ++){
 }
 redTakenPiece = document.querySelectorAll('.redTakenPieceOff')
 blueTakenPiece = document.querySelectorAll('.blueTakenPieceOff')
-console.log(redTakenPiece[1])
+
+//console.log(redTakenPiece[1])
 }
-
-
-
 
 makeAllGamePices()
 TheWholegame()
-////ResetGame 
+
+////ResetGameFunction 
 let restartGameBTN = document.getElementById("RestartGameBTN")
 
 restartGameBTN.addEventListener("click", resestGame)
@@ -174,7 +173,8 @@ function resestGame(){
     blueTakenPiece.forEach(removeBlueTakenPiece  =>{
         removeBlueTakenPiece.remove()
     })
-
+    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: 12`
+    document.getElementById("RedPieceCount").innerText = `Red Piece Count: 12`
     
     makeAllGamePices()
     TheWholegame()
@@ -196,8 +196,8 @@ function resestGame(){
 //////////////////////////////////////////////////////////////////////////////////
 
 function TheWholegame(){
-    console.log(allPieces[1])
-    console.log(redTakenPiece[1])
+    //console.log(allPieces[1])
+    //console.log(redTakenPiece[1])
 //Add addEventListener depending on turn
 let bluePieces
 //bluePieces.forEach(bluePiece=>{console.log(bluePiece)})
@@ -1017,16 +1017,11 @@ function checkForDoubleJumps(){
 function pieceHoder(){
         if(turn == 0){
             redTakenPiece
-            
                 redTakenPiece[redPieces.length+redKings.length-1].classList.add('redTakenPieceON')
-            
         }
         else if (turn == 1){
-
             blueTakenPiece[bluePieces.length+blueKings.length-1].classList.add('blueTakenPieceON')
-
-        }    
-             
+        }        
     }
     
 
@@ -1055,4 +1050,4 @@ allPieces[activatedPiece].classList.remove(classWeAre)
 allPieces[activatedPiece].classList.remove("activatedPiece")
 allPieces[activatedPiece].classList.add("hidden")
 }
-}
+}//the whole game

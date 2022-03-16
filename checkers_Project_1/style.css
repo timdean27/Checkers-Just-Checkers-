@@ -5,6 +5,12 @@ span{
   padding: 5px;
 
 }
+#RestartGameBTN{
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 10px;
+  }
 #BlueStartGameBTN{
 color: black;
 font-size: 25px;
