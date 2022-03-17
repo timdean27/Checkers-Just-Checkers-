@@ -157,8 +157,8 @@ function resestGame(){
     blueTakenPiece.forEach(removeBlueTakenPiece  =>{
         removeBlueTakenPiece.remove()
     })
-    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: 12`
-    document.getElementById("RedPieceCount").innerText = `Red Piece Count: 12`
+    document.getElementById("BluePieceCount").innerText = `Blue Piece Count: 12 `
+    document.getElementById("RedPieceCount").innerText = `Red Piece Count: 12 `
 
     rightForwardOpenPieceUP = 0
     leftForwardOpenPieceUp = 0
