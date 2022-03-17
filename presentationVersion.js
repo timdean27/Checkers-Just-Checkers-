@@ -61,7 +61,7 @@ for(let i =0 ; i <= 64-1 ; i ++){
     makePiece = document.createElement('div')
         makePiece.classList.add('pieces')
         makePiece.setAttribute("id",`${i}`)
-        makePiece.innerText= `${i}`
+        // makePiece.innerText= `${i}`
         
         allSquares[i].appendChild(makePiece)
 }
@@ -844,6 +844,16 @@ function NoMovesAvaliablefunc(){
     winGameFunc()
     }
     else{
+
+        setTimeout(function() {
+            let cantMValert = document.getElementById("CantMVAlert")
+            cantMValert.innerHTML = "You Can't move this Piece"
+          }, 25);
+          setTimeout(function() {
+            let cantMValert = document.getElementById("CantMVAlert")
+            cantMValert.innerHTML = ""
+          }, 800);
+
         console.log("piece cant be moved")
     }
 

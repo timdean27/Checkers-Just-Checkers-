@@ -10,31 +10,37 @@
     <header>
         <h1>Just Checkers  test</h1>
     </header>
-    <button id = "RestartGameBTN"></buttonclass>Clear Game</button>
+    
     <!-- <button id = "startGameBTN"></buttonclass>Start New Game</button> -->
-    <div class="top-page">
-        
-        <div id = "RedPieceCount">Red Piece Count: Starts at 12 </div>
-        <div id = "BluePieceCount">Blue Piece Count:Starts at 12 </div>
-        <div id = "TurnTracker">Turn Tracker: </div>
-    </div>
+    <section>
+        <button id = "RestartGameBTN"></buttonclass>Clear Game</button>
+        <div class="top-page">
+            <div id = PieceCounters>
+            <span id = "RedPieceCount">Red Piece Count: Starts at 12 </span>
+            <span id = "BluePieceCount">Blue Piece Count:Starts at 12 </span>
+            </div>
+            <div id = "TurnTracker">Turn Tracker: </div>
+            <span id="CantMVAlert"></span>
+        </div>
 
-    <!-- <div id = "TopRow">0 1 2 3 4 5 6 7 </div> -->
-    
-    
-        <!-- <div id = "SideColumn">0 1 2 3 4 5 6 7 </div> -->
-        <div id = "chessBoardContainer"></div>
-  
 
-    <div class="Button-div">
-        <button id = "BlueStartGameBTN"></buttonclass>Start Game as Blue</button>
-        <button id = "RedStartGameBTN"></buttonclass>Start Game as Red</button>
-    </div>
-    <div class="bottom-page">
-        <div class ="Pieceholder" id = "RedPieceHolder"></div>
-        <div class ="Pieceholder" id = "BluePieceHolder"></div>
-        
-    </div>
+        <div class ="main-section">
+            <div class="center-of-page">
+                
+                <div class ="Pieceholder" id = "RedPieceHolder"></div>
+                <div id = "chessBoardContainer"></div>
+                <div class ="Pieceholder" id = "BluePieceHolder"></div>
+            </div>
+    
+
+        <div class="Button-div">
+            <button id = "BlueStartGameBTN"></buttonclass>Start Game as Blue</button>
+            <button id = "RedStartGameBTN"></buttonclass>Start Game as Red</button>
+        </div>
+
+    </section>
+
+    
     
     <!-- <button class = "TestRemoveEvent"></buttonclass>TestRemoveEvent</button> -->
     <!-- <button class = "ChangeTurn"></buttonclass>ChangeTurn</button> -->

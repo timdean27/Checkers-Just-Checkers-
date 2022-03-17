@@ -1,16 +1,83 @@
-span{
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  padding: 5px;
-
+body{
+  background-image:url('Light-Wood-Background-Wallpaper.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
 #RestartGameBTN{
   color: black;
   font-size: 25px;
   text-align: center;
   border-radius: 10px;
   }
+  #CantMVAlert{
+    margin-top: 50px;
+    color: red;
+    font-size: 25px;
+  }
+
+
+.Pieceholder{
+  display: inline-block;
+  border: 5px;
+  margin: 50px;
+  height: 700px;
+    width: 50px;
+    border: 3px solid black;
+    background-color: #D8B589;
+    box-shadow: 5px 5px 10px black;
+}
+header{
+  display: block;
+  position: relative;
+  top: 10%;
+  left: 42.5%;
+  padding: 25 px;
+  margin: 25 px;
+}
+.main-section{
+  display: block;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 30%;
+  left: 30%;
+}
+.top-page{
+  display: block;
+  position: absolute;
+  top: 20%;
+  left: 45%;
+}
+#PieceCounters{
+  position: relative;
+ padding: 10px;
+  right: 32%;
+  font-size: 20px;
+
+}
+
+#TurnTracker{
+  font-size: 25px;
+}
+#chessBoardContainer{
+  margin: auto;
+  display: inline-block;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+  border: 3px solid black;
+  box-shadow: 10px 5px 5px black;
+}
+.Button-div{
+  display: block;
+  position: relative;
+  left: 7%;
+}
 #BlueStartGameBTN{
 color: black;
 font-size: 25px;
@@ -19,18 +86,11 @@ text-align: center;
 box-shadow: 0px 5px gray;
 border-radius: 10px;
 }
+
 #BlueStartGameBTN.avtive{
   transform: translateY(4px);
   box-shadow: 0px 5px gold;
 }
-.Pieceholder{
-  height: 50px;
-    width: 700px;
-    border: 3px solid black;
-    background-color: #D8B589;
-    box-shadow: 10px 5px 0px brown;
-}
-
 
 #RedStartGameBTN{
   color: black;
@@ -39,32 +99,14 @@ border-radius: 10px;
   text-align: center;
   box-shadow: 0px 5px gray;
   border-radius: 10px;
-  }
+}
   #RedStartGameBTN.avtive{
     transform: translateY(4px);
     box-shadow: 0px 5px gold;
   }
-
-#chessBoardContainer{
-    height: 400px;
-    width: 400px;
-    border: 3px solid black;
-    box-shadow: 10px 5px 5px black;
-}
-#TurnTracker{
-  font-size: 20px;
-}
-#SideColumn{
-    letter-spacing: 20px;
-    display: block;
-    flex-direction: column;
-
-}
-#TopRow{
-  letter-spacing: 21.5px;
-}
 .square {
-    float: left;
+  float: left;
+  position: relative;
     width: 50px;
     height: 50px;
     margin: 0;
@@ -88,7 +130,7 @@ border-radius: 10px;
     width: 35px;
     height: 35px;
     border-radius: 50%; 
-    margin: 0px;
+    margin: 2px;
     background-color:orange;
     
   }
@@ -102,26 +144,28 @@ border-radius: 10px;
 
 .redPiece{
     background-color: red;
-    box-shadow: 5px  5px red;
-    border: solid black;
+    box-shadow: 3px  2px black;
+    border: solid maroon;
 }
 .bluePiece{
-    background-color: CornflowerBlue;
-    box-shadow: 5px  5px CornflowerBlue;
-    border: solid black;
+    background-color: cornflowerblue;
+    box-shadow: 3px  2px black;
+    border: solid rgba(54, 54, 248, 0.87);
 }
 .activatedPiece{
   border: solid black;
   background-color: green;
 }
 .blueKing{
-  background-color: gold;
-  box-shadow: 5px  5px gold;
+  background-image:url('Chess-piece-Tile-King-outline.png') no-repeat 50px 50px;
+  /* background-color: gold; */
+  box-shadow: 3px  2px black;
   border: solid CornflowerBlue;
 }
 .redKing{
-  background-color: gold;
-  box-shadow: 5px  5px gold;
+  background-image:url('Chess-piece-Tile-King-outline.png');
+  /* background-color: gold; */
+  box-shadow: 3px  2px black;
   border: solid red;
 }
 .redTakenPieceON{
@@ -133,24 +177,24 @@ border-radius: 10px;
     width: 35px;
     height: 35px;
     border-radius: 50%; 
-    margin: 0px;
-  background-color: red;
-  box-shadow: 5px  5px red;
-  border: solid black;
+    margin: 2px;
+    background-color: red;
+    box-shadow: 3px  2px black;
+    border: solid maroon;
 }
 .blueTakenPieceON{
-  float:left;
-  display: flex;
+    float:left;
+    display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
     width: 35px;
     height: 35px;
     border-radius: 50%; 
-    margin: 0px;
-  background-color: CornflowerBlue;
-  box-shadow: 5px  5px CornflowerBlue;
-  border: solid black;
+    margin: 2px;
+    background-color: cornflowerblue;
+    box-shadow: 3px  2px black;
+    border: solid rgba(54, 54, 248, 0.87);
 }
 
   .hidden{
@@ -166,3 +210,13 @@ border-radius: 10px;
   }
 
  
+  @media only screen and (max-width : 640px){
+    #chessBoardContaine{
+      height: 400px;
+    width: 400px;
+    }
+    .pieces{
+      height: 35px;
+      width: 35px;
+    }
+  }
