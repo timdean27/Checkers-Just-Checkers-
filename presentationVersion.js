@@ -123,14 +123,14 @@ redPieceHolder = document.getElementById("RedPieceHolder")
 for(i =0; i < 12 ; i ++){
     makeTakenPiecered = document.createElement('div')
     makeTakenPiecered.classList.add('redTakenPieceOff')
-    makeTakenPiecered.setAttribute("id",`${i}`)
+    makeTakenPiecered.setAttribute("id",`redTakenPiece${i}`)
     redPieceHolder.appendChild(makeTakenPiecered)
 }
 bluePieceHolder= document.getElementById("BluePieceHolder")
 for(i =0; i < 12 ; i ++){
     makeTakenPieceblue = document.createElement('div')
     makeTakenPieceblue.classList.add('blueTakenPieceOff')
-    makeTakenPieceblue.setAttribute("id",`${i}`)
+    makeTakenPieceblue.setAttribute("id",`blueTakenPiece${i}`)
     bluePieceHolder.appendChild(makeTakenPieceblue)
 }
 redTakenPiece = document.querySelectorAll('.redTakenPieceOff')
@@ -159,7 +159,7 @@ function resestGame(){
     })
     document.getElementById("BluePieceCount").innerText = `Blue Piece Count: 12`
     document.getElementById("RedPieceCount").innerText = `Red Piece Count: 12`
-    
+
     rightForwardOpenPieceUP = 0
     leftForwardOpenPieceUp = 0
     rightForwardOpenPieceDown = 0

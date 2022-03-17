@@ -137,20 +137,20 @@ redPieceHolder = document.getElementById("RedPieceHolder")
 for(i =0; i < 12 ; i ++){
     makeTakenPiecered = document.createElement('div')
     makeTakenPiecered.classList.add('redTakenPieceOff')
-    makeTakenPiecered.setAttribute("id",`${i}`)
+    makeTakenPiecered.setAttribute("id",`redTakenPiece${i}`)
     redPieceHolder.appendChild(makeTakenPiecered)
 }
 bluePieceHolder= document.getElementById("BluePieceHolder")
 for(i =0; i < 12 ; i ++){
     makeTakenPieceblue = document.createElement('div')
     makeTakenPieceblue.classList.add('blueTakenPieceOff')
-    makeTakenPieceblue.setAttribute("id",`${i}`)
+    makeTakenPieceblue.setAttribute("id",`blueTakenPiece${i}`)
     bluePieceHolder.appendChild(makeTakenPieceblue)
 }
 redTakenPiece = document.querySelectorAll('.redTakenPieceOff')
 blueTakenPiece = document.querySelectorAll('.blueTakenPieceOff')
 
-//console.log(redTakenPiece[1])
+
 }
 
 makeAllGamePices()
