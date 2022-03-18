@@ -1,6 +1,6 @@
 # GA-Checkers-Project-
 
-Live Link: [Click to Play] https://timdean27.github.io/GA-Checkers-Project-/
+**Live Link:** [Click to Play](https://timdean27.github.io/GA-Checkers-Project-/)
 
 ## Checkers
 ### Playing The Game:
