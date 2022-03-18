@@ -18,10 +18,9 @@ but can be elevated to “Kings”. Men are placed only on the darker squares of
 The goal of the game is to either eliminate all of the opponent’s pieces, or be the first to prevent the opponent from making legal moves.
 
 ## Code Styles
+-JavaScript
 
 -HTML
-
--JavaScript
 
 -CSS
 
