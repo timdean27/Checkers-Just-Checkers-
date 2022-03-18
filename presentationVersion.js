@@ -56,7 +56,7 @@ for(let i =0 ; i <= 7 ; i ++){
     let makeTakenPieceblue
     let redTakenPiece
     let blueTakenPiece
-function makeAllGamePices(){
+function makeAllGamePieces(){
 for(let i =0 ; i <= 64-1 ; i ++){
     makePiece = document.createElement('div')
         makePiece.classList.add('pieces')
@@ -139,15 +139,15 @@ blueTakenPiece = document.querySelectorAll('.blueTakenPieceOff')
 
 }
 
-makeAllGamePices()
+makeAllGamePieces()
 TheWholegame()
 
 ////ResetGameFunction 
 let restartGameBTN = document.getElementById("RestartGameBTN")
 
-restartGameBTN.addEventListener("click", resestGame)
-function resestGame(){
-    console.log("Resest Game")
+restartGameBTN.addEventListener("click", resetsGame)
+function resetsGame(){
+    console.log("Resets Game")
     allPieces.forEach(removePiece =>{
         removePiece.remove()
     })
@@ -169,10 +169,13 @@ function resestGame(){
     rightForwardDownJump = 0
     leftForwardDownJump= 0
     spotWeWantToMoveTO = 0
-    makeAllGamePices()
+    makeAllGamePieces()
     TheWholegame()
  
 }
+let blueWins = 0
+let redWins = 0
+
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
@@ -257,7 +260,7 @@ function addClickeventToPieces(){
 // change the players turn function
 //this will be called at the end of a move and activatePieces for the next player
 let turnTrackerHTML = document.getElementById("TurnTracker")
-turnTrackerHTML.innerText = "Chose a Color"
+turnTrackerHTML.innerText = "Choose a Color"
 
 function changeWhosTurn(){
     pieceWasMoved = false
@@ -494,7 +497,7 @@ function checkForOpenSpotsNoJumps(){
 
 
 //function to clear and reset classes after a piece is moved
-function resestAfterPieceIsMoved(){
+function resetsAfterPieceIsMoved(){
     pieceWasMoved = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
     allPieces[activatedPiece].removeEventListener("click", DoubleClickedActivatedPiece)
@@ -565,25 +568,25 @@ function movePiece(event){
     if(spotWeWantToMoveTO == rightForwardOpenPieceUP && allPieces[rightForwardOpenPieceUP].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceUP}`, allPieces[rightForwardOpenPieceUP])
         
-        resestAfterPieceIsMoved()
+        resetsAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceUp  && allPieces[leftForwardOpenPieceUp].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceUp }`, allPieces[leftForwardOpenPieceUp])
         
-        resestAfterPieceIsMoved()
+        resetsAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardOpenPieceDown && allPieces[rightForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${rightForwardOpenPieceDown}`, allPieces[rightForwardOpenPieceDown])
         
-        resestAfterPieceIsMoved()
+        resetsAfterPieceIsMoved()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardOpenPieceDown && allPieces[leftForwardOpenPieceDown].classList.contains("PieceYouCanMoveTo")){
         console.log(`You Want to move to spot${leftForwardOpenPieceDown}`, allPieces[leftForwardOpenPieceDown])
         
-        resestAfterPieceIsMoved()
+        resetsAfterPieceIsMoved()
     }
     singleJumpMovePiece()
 }
@@ -746,7 +749,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[activatedPiece-7].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
         pieceHoder()
-        resestAfterPieceIsJumpedSingle()
+        resetsAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardUPJump  && allPieces[leftForwardUPJump].classList.contains("PieceYouCanMoveTo")){
@@ -754,7 +757,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[activatedPiece-9].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
         pieceHoder()
-        resestAfterPieceIsJumpedSingle()
+        resetsAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == rightForwardDownJump  && allPieces[rightForwardDownJump].classList.contains("PieceYouCanMoveTo")){
@@ -762,7 +765,7 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+7].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
         pieceHoder()
-        resestAfterPieceIsJumpedSingle()
+        resetsAfterPieceIsJumpedSingle()
     }
     //move to rightForwardOpenPieceUP
     if(spotWeWantToMoveTO == leftForwardDownJump && allPieces[leftForwardDownJump].classList.contains("PieceYouCanMoveTo")){
@@ -770,14 +773,14 @@ function singleJumpMovePiece(){
         pieceWeSingleJumped = allPieces[parseInt(activatedPiece)+9].id
         console.log("pieceWeSingleJumped",allPieces[pieceWeSingleJumped])
         pieceHoder()
-        resestAfterPieceIsJumpedSingle()
+        resetsAfterPieceIsJumpedSingle()
     }
 
     
 }
 
 //reset after piece is jumped
-function resestAfterPieceIsJumpedSingle(){
+function resetsAfterPieceIsJumpedSingle(){
 
     pieceWasMoved = true
     allPieces[activatedPiece].classList.remove("activatedPiece")
@@ -879,6 +882,8 @@ function winGameFunc(){
         console.log("Red Wins")
         turnTrackerHTML.innerText = "Red Wins!!!"
         turnTrackerHTML.style.color="red"
+        redWins++
+        document.getElementById("RedWins").innerText = `RedWins ${redWins}`
         
     } 
     else if (redPieces.length+redKings.length == 0){
@@ -887,6 +892,8 @@ function winGameFunc(){
         turnTrackerHTML.innerText = "Blue Wins!!!"
         turnTrackerHTML.style.color="blue"
         
+        blueWins++
+        document.getElementById("BlueWins").innerText = `BlueWins ${blueWins}`
     }
     else{
     changeWhosTurn()
