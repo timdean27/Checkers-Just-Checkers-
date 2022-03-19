@@ -8,7 +8,7 @@ let allPiecesArray =[]
 let nullPieceArray =[]
 let PotentialyUseablePieceArray =[]
 
-//making sqaures on board
+///making sqaures on board
 
 for(let i =0 ; i <= 64-1 ; i ++){
     let makeSquare = document.createElement('div')
